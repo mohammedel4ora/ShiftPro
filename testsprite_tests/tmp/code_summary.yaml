@@ -1,0 +1,174 @@
+version: "2"
+type: frontend
+tech_stack:
+  - language: Vanilla JavaScript (ES6+ Modules)
+  - framework: None (Pure HTML/CSS/JS PWA)
+  - ui_library: None
+  - other: IndexedDB, Service Worker, Web Geolocation API, PWA Manifest
+routes:
+  - path: /
+    file: index.html
+    auth_required: false
+    description: Single-page application with tab-based navigation (Dashboard, Settings, Logs)
+  - path: /#dashboard
+    file: index.html
+    auth_required: false
+    description: Dashboard tab showing current shift status, live timer, quick actions, and weekly summary
+  - path: /#settings
+    file: index.html
+    auth_required: false
+    description: Settings tab for configuring geofence coordinates, shift thresholds, and preferences
+  - path: /#logs
+    file: index.html
+    auth_required: false
+    description: Logs tab showing monthly overview and daily history table
+features:
+  - name: Bottom Navigation
+    description: Tab-based navigation between Dashboard, Settings, and Logs sections
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /
+    user_interactions:
+      - Click Dashboard tab to view dashboard section
+      - Click Settings tab to view settings section
+      - Click Logs tab to view logs/history section
+      - Observe active tab highlights correctly
+    api_calls: []
+    auth_required: false
+
+  - name: Theme Toggle
+    description: Toggle between dark and light themes, persisted via localStorage
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /
+    user_interactions:
+      - Click the moon/sun icon button in the header to toggle theme
+      - Observe page switches between dark and light mode
+    api_calls: []
+    auth_required: false
+
+  - name: Language/Locale Toggle
+    description: Toggle between English (LTR) and Arabic (RTL) languages, persisted via localStorage
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /
+    user_interactions:
+      - Click the globe icon button in the header to toggle between EN and AR
+      - Observe page language and text direction switch
+    api_calls: []
+    auth_required: false
+
+  - name: Clock In / Clock Out
+    description: Allows user to clock in or clock out, recording shift start/end times and computing total hours via IndexedDB
+    files:
+      - index.html
+      - js/app.js
+      - js/core/shifts.js
+      - js/infrastructure/db.js
+    entry_route: /
+    user_interactions:
+      - Click the Clock In / Clock Out button on the Dashboard
+      - Observe the button label switches between Clock In and Clock Out
+      - Observe timer starts counting up after clock-in
+    api_calls: []
+    auth_required: false
+
+  - name: Quick Log Actions
+    description: Log special day types (Sick Leave, Vacation, Overtime, Remote) with a single button tap
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /
+    user_interactions:
+      - Click Sick Leave button in Quick Log section
+      - Click Vacation button in Quick Log section
+      - Click Overtime button in Quick Log section
+      - Click Remote button in Quick Log section
+    api_calls: []
+    auth_required: false
+
+  - name: Live Shift Timer
+    description: Displays a running clock showing hours worked since last clock-in
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /
+    user_interactions:
+      - View the timer display on the dashboard updating every second after clocking in
+    api_calls: []
+    auth_required: false
+
+  - name: Geofence Configuration
+    description: Configure workplace GPS coordinates (lat/lng) and geofence radius in the Settings tab
+    files:
+      - index.html
+      - js/app.js
+      - js/core/geofence.js
+    entry_route: /#settings
+    user_interactions:
+      - Enter latitude value in the lat input
+      - Enter longitude value in the lng input
+      - Enter radius value in the radius input
+      - Click Detect Current Location to auto-fill coordinates via browser geolocation
+      - Click Save Location to persist coordinates to localStorage
+    api_calls: []
+    auth_required: false
+
+  - name: Shift Threshold Configuration
+    description: Configure custom start/end times for Shift 1, Shift 2, and Shift 3 in Settings
+    files:
+      - index.html
+      - js/app.js
+      - js/core/shifts.js
+    entry_route: /#settings
+    user_interactions:
+      - Change Shift 1 start time input
+      - Change Shift 1 end time input
+      - Change Shift 2 start time input
+      - Change Shift 2 end time input
+      - Change Shift 3 start time input
+      - Change Shift 3 end time input
+      - Click Save Thresholds button to persist shift times
+    api_calls: []
+    auth_required: false
+
+  - name: User Preferences
+    description: Toggle switches for auto-detect location, notifications, and vibrate on clock in/out
+    files:
+      - index.html
+      - js/app.js
+    entry_route: /#settings
+    user_interactions:
+      - Toggle the Auto-detect location switch on/off
+      - Toggle the Notifications switch on/off
+      - Toggle the Vibrate on clock in/out switch on/off
+    api_calls: []
+    auth_required: false
+
+  - name: Shift Logs History
+    description: View monthly overview (total hours, days worked, vacation left) and daily history table
+    files:
+      - index.html
+      - js/app.js
+      - js/infrastructure/db.js
+    entry_route: /#logs
+    user_interactions:
+      - Navigate to the Logs tab
+      - View monthly overview stats (Total Hours, Days Worked, Vacation Left)
+      - View daily history table with Date, Shift, In, Out, Total columns
+    api_calls: []
+    auth_required: false
+
+known_limitations:
+  - issue: Geofence auto-detection requires browser geolocation permission; may be blocked in test environment
+    location: js/core/geofence.js
+    impact: Location-based auto clock-in/out cannot be verified without geolocation permission
+  - issue: Push notifications require service worker permission grant
+    location: sw.js
+    impact: Notification tests may fail if permission is denied in browser
+  - issue: Static HTML with placeholder data (timer shows 06:32:14, weekly stats are hardcoded)
+    location: index.html
+    impact: Dynamic data display depends on IndexedDB records that may not exist in fresh test environment

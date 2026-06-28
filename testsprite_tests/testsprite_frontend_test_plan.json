@@ -1,0 +1,1173 @@
+[
+  {
+    "id": "TC001",
+    "title": "Clock out and complete the shift",
+    "description": "Verify that a user can clock out after starting a shift and the shift is completed on the dashboard.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Clock in from the dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Clock out from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is shown as clocked out"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the shift timer is stopped"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Clock in and see the shift begin",
+    "description": "Verify that a user can clock in from the dashboard and the active shift state is shown.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Clock in from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is shown as clocked in"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live shift timer is running"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Clock in from the dashboard",
+    "description": "Verify that a user can start a shift from the dashboard and see the app enter clocked-in mode with a running timer.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard shows that the shift is active"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live timer begins counting up"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Save a shift and review it in logs",
+    "description": "Verify that a completed clock in and clock out shift appears in Logs with a recorded daily history entry.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Clock in from the dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Clock out from the dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the completed shift appears in the daily history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the monthly summary includes the recorded attendance"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Completed shift appears in logs",
+    "description": "Verify that a completed shift is saved and shown in the logs history after clocking out.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control again"
+      },
+      {
+        "type": "action",
+        "description": "Click the logs tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the completed shift appears in the history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily history entry shows recorded attendance data"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Switch between all main app sections",
+    "description": "Verify that a user can move between Dashboard, Settings, and Logs from the bottom navigation and each section becomes active.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard content is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the settings content is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the logs content is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Clocked-in state persists while navigating tabs",
+    "description": "Verify that a started shift remains active when the user switches between dashboard, settings, and logs.",
+    "category": "Clock In / Clock Out",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control"
+      },
+      {
+        "type": "action",
+        "description": "Click the settings tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the dashboard tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the logs tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the active shift state is still reflected in the app shell"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live timer remains available for the active shift"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Open the logs section from the main shell",
+    "description": "Verify that a user can open Logs directly from the main shell and the logs/history view is shown.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the logs content is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the logs tab is active"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Timer updates while a shift remains active",
+    "description": "Verify that the live shift timer keeps updating after clock-in until the user clocks out.",
+    "category": "Live Shift Timer",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live timer to update"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the timer value has advanced"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the shift is still active"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Timer stops after clock out",
+    "description": "Verify that the live shift timer stops changing once the user ends the shift.",
+    "category": "Live Shift Timer",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live timer to update"
+      },
+      {
+        "type": "action",
+        "description": "Click the clock in and out control again"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live timer to update again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the timer no longer advances after clock out"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the shift is no longer active"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "View monthly summary and daily history in logs",
+    "description": "Verify that the logs page shows monthly attendance totals and the daily history table for recorded attendance.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the monthly summary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily history table is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "View monthly attendance totals on Logs",
+    "description": "Verify that a user can open Logs and see the monthly attendance summary for their recorded time.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify monthly summary totals are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Log a sick leave entry from the dashboard",
+    "description": "Verify that a user can create a sick leave attendance record from the dashboard and see it in Logs.",
+    "category": "Quick Log Actions",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Create a sick leave quick log from the dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the special attendance record appears in the history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the recorded day is shown in the logs summary"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Review daily attendance history columns",
+    "description": "Verify that a user can open Logs and review the daily history table for recorded attendance entries.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily history table is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the table includes date, shift, in, out, and total information"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Log a vacation entry from the dashboard",
+    "description": "Verify that a user can create a vacation attendance record from the dashboard and see it in Logs.",
+    "category": "Quick Log Actions",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Create a vacation quick log from the dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the special attendance record appears in the history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the logs summary reflects the recorded entry"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Show logs history with monthly summary and daily table",
+    "description": "Verify that a user can review attendance history in Logs with the monthly summary and daily columns visible.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the monthly summary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily history table is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Switch from Logs to other app sections",
+    "description": "Verify that a user can move from Logs to Dashboard and Settings and continue using the app shell normally.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "action",
+        "description": "Click the tab to open Dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the tab to open Settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Settings view is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app navigation remains available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Keep theme selection after switching sections",
+    "description": "Verify that a user can toggle the theme and the chosen appearance remains consistent while navigating through the app.",
+    "category": "Theme Toggle",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the theme setting"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected theme is still applied"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the interface remains readable in the selected theme"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Log overtime from the dashboard",
+    "description": "Verify that an overtime quick action creates a saved attendance record for the current day.",
+    "category": "Quick Log Actions",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the overtime quick action"
+      },
+      {
+        "type": "action",
+        "description": "Click the logs tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an overtime entry appears in the history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the special attendance record is shown in logs"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "Inspect past attendance entries by scrolling the history",
+    "description": "Verify that a user can scroll through Logs and continue reviewing older attendance entries in the history table.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the daily history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify past attendance entries remain visible in the history table"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Log remote work from the dashboard",
+    "description": "Verify that a remote work quick action creates a saved attendance record for the current day.",
+    "category": "Quick Log Actions",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the remote work quick action"
+      },
+      {
+        "type": "action",
+        "description": "Click the logs tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a remote work entry appears in the history table"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the special attendance record is shown in logs"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC022",
+    "title": "Switch the interface language and text direction",
+    "description": "Verify that a user can toggle between English and Arabic and the text direction changes accordingly.",
+    "category": "Language/Locale Toggle",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the language setting"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the interface language changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the text direction changes appropriately"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Keep the selected language while navigating the app",
+    "description": "Verify that a user can switch to Arabic or English and the selection remains in place while moving through the main tabs.",
+    "category": "Language/Locale Toggle",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the language setting"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected language remains applied"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the layout direction remains consistent"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Configure geofence settings and keep them after returning",
+    "description": "Verify that a user can save geofence coordinates and radius in Settings and the values remain after navigating away and back.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a valid latitude value in the geofence coordinates field"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a valid longitude value in the geofence coordinates field"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a valid radius value in the geofence radius field"
+      },
+      {
+        "type": "action",
+        "description": "Save the settings"
+      },
+      {
+        "type": "action",
+        "description": "Click the Dashboard section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the saved geofence settings are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the geofence radius is retained"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Save geofence location settings",
+    "description": "The user can enter valid workplace coordinates and radius, save them, and see the settings remain available afterward.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid latitude value"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid longitude value"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid radius value"
+      },
+      {
+        "type": "action",
+        "description": "Save the location settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the geofence settings are retained"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the saved location configuration is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Configure shift threshold times and keep them after returning",
+    "description": "Verify that a user can save shift threshold times in Settings and the values remain after navigating away and back.",
+    "category": "Shift Threshold Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Fill in valid start time values for the shift thresholds"
+      },
+      {
+        "type": "action",
+        "description": "Fill in valid end time values for the shift thresholds"
+      },
+      {
+        "type": "action",
+        "description": "Save the settings"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the saved shift threshold settings are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the shift threshold values are retained"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Save custom shift thresholds",
+    "description": "The user can change all shift window times, save them, and see the updated schedule remain available afterward.",
+    "category": "Shift Threshold Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 1 start time"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 1 end time"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 2 start time"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 2 end time"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 3 start time"
+      },
+      {
+        "type": "action",
+        "description": "Change the Shift 3 end time"
+      },
+      {
+        "type": "action",
+        "description": "Save the threshold settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated shift schedule is retained"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Review vacation balance in the monthly summary",
+    "description": "Verify that a user can open Logs and see vacation-related monthly summary information alongside attendance totals.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify monthly summary totals are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify vacation balance information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC029",
+    "title": "Detect current location and save geofence settings",
+    "description": "The user can autofill geofence coordinates from the browser location service and save the detected location settings.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Detect the current location"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the coordinates are autofilled"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid radius value"
+      },
+      {
+        "type": "action",
+        "description": "Save the location settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the geofence settings are retained"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC030",
+    "title": "Use current location to populate geofence settings",
+    "description": "Verify that a user can detect the current location from Settings and the geofence fields are populated.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Trigger current location detection"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the geofence coordinates are populated"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the detected location can be used in the settings form"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC031",
+    "title": "Toggle auto-detect location preference",
+    "description": "The user can turn automatic location detection on or off and see the preference state change in settings.",
+    "category": "User Preferences",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Toggle automatic location detection"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the auto-detect location preference state changes"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC032",
+    "title": "Show validation feedback for invalid geofence values",
+    "description": "Verify that a user sees validation feedback when entering invalid geofence coordinates or radius in Settings.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Fill invalid latitude and longitude values in the geofence fields"
+      },
+      {
+        "type": "action",
+        "description": "Fill an invalid radius value in the geofence radius field"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to save the settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a geofence validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC033",
+    "title": "Show validation feedback for malformed shift threshold times",
+    "description": "Verify that a user sees validation feedback when entering malformed shift threshold times in Settings.",
+    "category": "Shift Threshold Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Settings section in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Fill malformed start time values for the shift thresholds"
+      },
+      {
+        "type": "action",
+        "description": "Fill malformed end time values for the shift thresholds"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to save the settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a shift threshold validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC034",
+    "title": "Toggle notifications preference",
+    "description": "The user can turn notifications on or off and see the preference state change in settings.",
+    "category": "User Preferences",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Toggle notifications"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the notifications preference state changes"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC035",
+    "title": "Toggle vibration preference",
+    "description": "The user can turn vibration on clock in or out on or off and see the preference state change in settings.",
+    "category": "User Preferences",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Toggle vibration on clock in or out"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the vibration preference state changes"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC036",
+    "title": "Show an empty history state with no recorded attendance",
+    "description": "Verify that Logs displays an empty state when there are no saved attendance records.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Logs section in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the history table is not populated"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC037",
+    "title": "Reject invalid geofence values",
+    "description": "The user sees validation feedback and cannot save when geofence coordinates or radius are outside valid bounds.",
+    "category": "Geofence Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid latitude value"
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid longitude value"
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid radius value"
+      },
+      {
+        "type": "action",
+        "description": "Save the location settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify geofence validation errors are visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC038",
+    "title": "See an empty history state when no records exist",
+    "description": "Verify that a user opening Logs with no saved attendance history sees a clear empty state instead of a table of records.",
+    "category": "Shift Logs History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#logs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no daily history entries are shown"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC039",
+    "title": "Reject malformed shift threshold times",
+    "description": "The user sees validation feedback and cannot save when shift threshold times are malformed or incomplete.",
+    "category": "Shift Threshold Configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#settings"
+      },
+      {
+        "type": "action",
+        "description": "Enter a malformed Shift 1 start time"
+      },
+      {
+        "type": "action",
+        "description": "Enter a malformed Shift 1 end time"
+      },
+      {
+        "type": "action",
+        "description": "Save the threshold settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify shift threshold validation errors are visible"
+      }
+    ],
+    "priority": "Low"
+  }
+]

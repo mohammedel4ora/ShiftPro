@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon-192.svg">
+  <title>ShiftPro — Personal Shift Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    // FOUC-prevention: apply persisted locale/dir before paint
+    (function () {
+      try {
+        var saved = localStorage.getItem('shiftpulse-locale');
+        var nav = (navigator.language || 'en').toLowerCase();
+        var lang = (saved && (saved === 'en' || saved === 'ar'))
+          ? saved
+          : (nav.indexOf('ar') === 0 ? 'ar' : 'en');
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      } catch (_) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="header__title" data-i18n="appTitle">ShiftPro</h1>
+        <div class="header__actions">
+          <button class="icon-btn" id="localeToggle" data-i18n-aria="localeToggle" aria-label="Toggle language" title="AR/EN">
+            <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="themeToggle" data-i18n-aria="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-btn__icon" id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="icon-btn" data-i18n-aria="notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main">
+      <!-- ---- Section: Dashboard ---- -->
+      <section class="section section--active" id="section-dashboard" role="tabpanel" data-i18n-aria="ariaDashboard" aria-label="Dashboard">
+        <!-- Status Card -->
+        <article class="card card--status">
+          <div class="card__status-indicator card__status-indicator--active"></div>
+          <div class="card__body">
+            <span class="card__label" data-i18n="currentStatus">Current Status</span>
+            <p class="card__title" data-i18n="insideWorkArea">Inside Work Area</p>
+            <span class="card__badge card__badge--morning" data-i18n="morningShift">Morning Shift</span>
+          </div>
+        </article>
+
+        <!-- Timer Card -->
+        <article class="card card--timer">
+          <div class="card__body">
+            <span class="card__label" data-i18n="todaysHours">Today's Hours</span>
+            <div class="timer">
+              <span class="timer__value" id="timerDisplay">06:32:14</span>
+              <span class="timer__unit" data-i18n="hoursWorked">hours worked</span>
+            </div>
+            <div class="timer__meta">
+              <span class="timer__meta-item">
+                <svg class="timer__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="clockIn">Clock In</span>: <strong>07:58 AM</strong>
+              </span>
+              <span class="timer__meta-item">
+                <svg class="timer__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="break">Break</span>: <strong>00:28</strong>
+              </span>
+            </div>
+          </div>
+          <button class="card__action-btn card__action-btn--primary" id="clockBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="clockOut">Clock Out</span>
+          </button>
+        </article>
+
+        <!-- Quick Action Card -->
+        <article class="card card--quick">
+          <div class="card__body">
+            <span class="card__label" data-i18n="quickLog">Quick Log</span>
+            <div class="quick-actions">
+              <button class="quick-actions__btn quick-actions__btn--sick" data-type="sick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span data-i18n="sickLeave">Sick Leave</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--vacation" data-type="vacation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span data-i18n="vacation">Vacation</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--overtime" data-type="overtime">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span data-i18n="overtime">Overtime</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--remote" data-type="remote">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <span data-i18n="remote">Remote</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Weekly Summary -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="thisWeek">This Week</span>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span class="summary-item__value">--:--</span>
+                <span class="summary-item__label" data-i18n="hours">Hours</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">0</span>
+                <span class="summary-item__label" data-i18n="shifts">Shifts</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">--:--</span>
+                <span class="summary-item__label" data-i18n="overtime">Overtime</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Settings ---- -->
+      <section class="section" id="section-settings" role="tabpanel" data-i18n-aria="ariaSettings" aria-label="Settings">
+        <!-- Work Location -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="workLocation">Work Location</span>
+            <div class="form-group">
+              <label class="form-group__label" for="lat" data-i18n="latitude">Latitude</label>
+              <input class="form-group__input" type="text" id="lat" value="25.2048" placeholder="e.g. 25.2048">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="lng" data-i18n="longitude">Longitude</label>
+              <input class="form-group__input" type="text" id="lng" value="55.2708" placeholder="e.g. 55.2708">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="radius" data-i18n="geofenceRadius">Geofence Radius (meters)</label>
+              <input class="form-group__input" type="number" id="radius" value="150" min="50" max="1000">
+            </div>
+            <button class="btn btn--secondary btn--full" id="detectLocationBtn" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+              <span data-i18n="detectLocation">Detect Current Location</span>
+            </button>
+            <button class="btn btn--primary btn--full" id="saveLocationBtn"><span data-i18n="saveLocation">Save Location</span></button>
+          </div>
+        </article>
+
+        <!-- Shift Thresholds -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="shiftThresholds">Shift Thresholds</span>
+            <div class="form-group">
+              <label class="form-group__label" for="shift1-start" data-i18n="shift1Start">Shift 1 (Morning) Start</label>
+              <input class="form-group__input" type="time" id="shift1-start" value="06:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift1-end" data-i18n="shift1End">Shift 1 End</label>
+              <input class="form-group__input" type="time" id="shift1-end" value="14:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift2-start" data-i18n="shift2Start">Shift 2 (Evening) Start</label>
+              <input class="form-group__input" type="time" id="shift2-start" value="14:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift2-end" data-i18n="shift2End">Shift 2 End</label>
+              <input class="form-group__input" type="time" id="shift2-end" value="22:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift3-start" data-i18n="shift3Start">Shift 3 (Night) Start</label>
+              <input class="form-group__input" type="time" id="shift3-start" value="22:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift3-end" data-i18n="shift3End">Shift 3 End</label>
+              <input class="form-group__input" type="time" id="shift3-end" value="06:00">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveThresholdsBtn"><span data-i18n="saveThresholds">Save Thresholds</span></button>
+          </div>
+        </article>
+
+        <!-- Preferences -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="preferences">Preferences</span>
+            <div class="toggle-row">
+              <span data-i18n="autoDetectLocation">Auto-detect location</span>
+              <label class="toggle">
+                <input type="checkbox" id="autoLocate" checked>
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span data-i18n="notifEnabled">Notifications</span>
+              <label class="toggle">
+                <input type="checkbox" id="notificationsEnabled" checked>
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span data-i18n="vibrateOnAction">Vibrate on clock in/out</span>
+              <label class="toggle">
+                <input type="checkbox" id="vibrateOnAction">
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+          </div>
+        </article>
+
+        <!-- Financial Settings -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="financialSettings">Financial Settings</span>
+            <div class="form-group">
+              <label class="form-group__label" for="baseSalary" data-i18n="baseSalary">Base Salary</label>
+              <input class="form-group__input" type="number" id="baseSalary" value="0" min="0" step="100">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveSalaryBtn"><span data-i18n="saveSalary">Save Salary</span></button>
+          </div>
+        </article>
+
+        <!-- Deductions -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="deductions">Deductions</span>
+            <div id="deductionsList"></div>
+            <button class="btn btn--secondary btn--full" id="addDeductionBtn"><span data-i18n="addDeduction">Add Deduction</span></button>
+            <button class="btn btn--primary btn--full" id="saveDeductionsBtn"><span data-i18n="saveDeductions">Save Deductions</span></button>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Payroll ---- -->
+      <section class="section" id="section-payroll" role="tabpanel" data-i18n-aria="ariaPayroll" aria-label="Payroll">
+        <article class="card card--payroll">
+          <div class="card__body">
+            <span class="card__label" data-i18n="payrollSummary">Payroll Summary</span>
+            <div id="payroll-summary-container"></div>
+          </div>
+        </article>
+        <article class="card card--payroll">
+          <div class="card__body">
+            <span class="card__label" data-i18n="dailyHistory">Daily History</span>
+            <div id="payroll-day-editor"></div>
+          </div>
+        </article>
+        <article class="card card--payroll">
+          <div class="card__body">
+            <div id="payroll-allowances-editor"></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Logs ---- -->
+      <section class="section" id="section-logs" role="tabpanel" data-i18n-aria="ariaLogs" aria-label="Logs">
+        <!-- Summary Widget -->
+        <article class="card card--summary">
+          <div class="card__body">
+            <span class="card__label" data-i18n="monthlyOverview">Monthly Overview</span>
+            <div class="summary-grid summary-grid--large">
+              <div class="summary-item summary-item--highlight">
+                <span class="summary-item__value">--:--</span>
+                <span class="summary-item__label" data-i18n="totalHours">Total Hours</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">0</span>
+                <span class="summary-item__label" data-i18n="daysWorked">Days Worked</span>
+              </div>
+              <div class="summary-item summary-item--accent">
+                <span class="summary-item__value">0</span>
+                <span class="summary-item__label" data-i18n="vacationLeft">Vacation Left</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Logs Table -->
+        <article class="card card--table">
+          <div class="card__body">
+            <span class="card__label" data-i18n="dailyHistory">Daily History</span>
+            <div class="logs-table">
+              <div class="logs-table__header">
+                <span class="logs-table__cell logs-table__cell--date" data-i18n="thDate">Date</span>
+                <span class="logs-table__cell logs-table__cell--shift" data-i18n="thShift">Shift</span>
+                <span class="logs-table__cell logs-table__cell--time" data-i18n="thIn">In</span>
+                <span class="logs-table__cell logs-table__cell--time" data-i18n="thOut">Out</span>
+                <span class="logs-table__cell logs-table__cell--hours" data-i18n="thTotal">Total</span>
+              </div>
+              <div class="logs-table__body">
+                <div class="logs-table__row" style="justify-content:center;padding:16px;color:var(--on-surface-muted)" data-i18n="noRecords">No records this month</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- ========== BOTTOM NAVIGATION ========== -->
+    <nav class="bottom-nav" role="tablist" data-i18n-aria="mainNav" aria-label="Main navigation">
+      <button class="bottom-nav__item bottom-nav__item--active" role="tab" aria-selected="true" data-section="dashboard" aria-controls="section-dashboard">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/>        <rect x="3" y="16" width="7" height="5"/></svg>
+        <span class="bottom-nav__label" data-i18n="navDashboard">Dashboard</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="settings" aria-controls="section-settings">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <span class="bottom-nav__label" data-i18n="navSettings">Settings</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="payroll" aria-controls="section-payroll">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M12 12h.01M7 12h.01M17 12h.01"/>
+        </svg>
+        <span class="bottom-nav__label" data-i18n="navPayroll">Payroll</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="logs" aria-controls="section-logs">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>></svg>
+        <span class="bottom-nav__label" data-i18n="navLogs">Logs</span>
+      </button>
+    </nav>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

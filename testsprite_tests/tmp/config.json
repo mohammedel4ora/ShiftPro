@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "executionArgs": {
+    "projectName": "ShiftPro",
+    "projectPath": "d:\\Projects\\Dev\\ShiftPro",
+    "testIds": [],
+    "additionalInstruction": "This is a single-page PWA with tab-based navigation. The app has no login. Dashboard is the default view. Navigation happens via bottom nav buttons with data-section attributes. Theme and language toggles are in the header.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-3zjJm-pTkHL3QpK0kTLw5Hya1eO4si6SAMkbZ955V32pTbS0kUlvnd14RqPyWmPeaXGwiyYytbGNujML8VU_Rx-ty7XRKRlFX3BzCxQFEhcGdvDldMW1XgZmsuu32D5w88k"
+    }
+  },
+  "serverPort": 61380
+}
