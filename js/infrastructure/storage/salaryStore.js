@@ -6,7 +6,7 @@
  */
 
 import { localStore } from './localStore.js';
-import { STORAGE_KEYS } from '../../shared/config.js';
+import { STORAGE_KEYS, DEFAULT_VACATION_CONFIG } from '../../shared/config.js';
 
 // ─── Defaults ───────────────────────────────────────────────
 const DEFAULTS = Object.freeze({
@@ -98,6 +98,25 @@ function sanitizeAllowance(item) {
   };
 }
 
+// ─── Vacation Config ─────────────────────────────────
+function getVacationConfig() {
+  const raw = localStore.get(STORAGE_KEYS.VACATION_CONFIG);
+  if (raw && typeof raw === 'object') {
+    return {
+      annual: Number.isFinite(raw.annual) ? Math.max(0, raw.annual) : DEFAULT_VACATION_CONFIG.annual,
+      casual: Number.isFinite(raw.casual) ? Math.max(0, raw.casual) : DEFAULT_VACATION_CONFIG.casual,
+    };
+  }
+  return { ...DEFAULT_VACATION_CONFIG };
+}
+
+function setVacationConfig(config) {
+  localStore.set(STORAGE_KEYS.VACATION_CONFIG, {
+    annual: Number.isFinite(config?.annual) ? Math.max(0, config.annual) : DEFAULT_VACATION_CONFIG.annual,
+    casual: Number.isFinite(config?.casual) ? Math.max(0, config.casual) : DEFAULT_VACATION_CONFIG.casual,
+  });
+}
+
 // ─── Export ─────────────────────────────────────────────────
 export const salaryStore = {
   // Base salary
@@ -113,4 +132,7 @@ export const salaryStore = {
   setMonthlyAllowances,
   addMonthlyAllowance,
   removeMonthlyAllowance,
+  // Vacation config
+  getVacationConfig,
+  setVacationConfig,
 };

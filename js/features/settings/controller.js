@@ -28,6 +28,13 @@ function loadFinancial() {
   const salary = salaryService.getBaseSalary();
   document.getElementById('baseSalary').value = salary.baseSalary;
   renderDeductions();
+  loadVacation();
+}
+
+function loadVacation() {
+  const config = salaryService.getVacationConfig();
+  document.getElementById('vacationAnnual').value = config.annual;
+  document.getElementById('vacationCasual').value = config.casual;
 }
 
 function renderDeductions() {
@@ -155,6 +162,13 @@ export function mount() {
     salaryService.setDeductions(collectDeductions());
     renderDeductions();
     eventBus.publish(EVENT_TOPICS.PAYROLL_UPDATED, {});
+  });
+
+  document.getElementById('saveVacationBtn').addEventListener('click', () => {
+    salaryService.setVacationConfig({
+      annual: parseInt(document.getElementById('vacationAnnual').value, 10) || 0,
+      casual: parseInt(document.getElementById('vacationCasual').value, 10) || 0,
+    });
   });
 
   eventBus.subscribe(EVENT_TOPICS.LOCALE_CHANGED, () => {

@@ -39,6 +39,8 @@ function applyFilter(events, filter) {
     if (filter.date && e.date !== filter.date) return false;
     if (filter.type && e.type !== filter.type) return false;
     if (filter.month && (!e.date || !e.date.startsWith(filter.month))) return false;
+    if (filter.dateFrom && (!e.date || e.date < filter.dateFrom)) return false;
+    if (filter.dateTo && (!e.date || e.date > filter.dateTo)) return false;
     return true;
   });
 }
@@ -57,8 +59,7 @@ async function addEvent(event) {
 async function getEvents(filter) {
   const all = await getAllEvents();
   let filtered = applyFilter(all, filter);
-  // For month queries, deduplicate per-date manual overrides
-  if (filter && filter.month) {
+  if (filter && (filter.month || filter.dateFrom)) {
     filtered = deduplicateManualEvents(filtered);
   }
   return filtered.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));

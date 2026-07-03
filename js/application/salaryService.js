@@ -9,13 +9,16 @@ import { salaryStore } from '../infrastructure/storage/salaryStore.js';
 import * as salaryEngine from '../core/salaryEngine.js';
 import { eventStore } from '../infrastructure/storage/eventStore.js';
 import { time } from '../core/time.js';
-import { eventBus } from '../shared/eventBus.js';
-import { EVENT_TOPICS } from '../shared/config.js';
 
 async function getMonthDaysData(year, month) {
-  const yearMonth = `${year}-${String(month).padStart(2, '0')}`;
-  const events = await eventStore.getEvents({ month: yearMonth });
-  
+  const startMonth = month === 1 ? 12 : month - 1;
+  const startYear = month === 1 ? year - 1 : year;
+
+  const startDate = `${startYear}-${String(startMonth).padStart(2, '0')}-26`;
+  const endDate = `${year}-${String(month).padStart(2, '0')}-25`;
+
+  const events = await eventStore.getEvents({ dateFrom: startDate, dateTo: endDate });
+
   // Group events by date
   const eventsByDate = new Map();
   for (const e of events) {
@@ -26,11 +29,12 @@ async function getMonthDaysData(year, month) {
     eventsByDate.get(date).push(e);
   }
 
-  // Build array for each day of the month
-  const daysInMonth = new Date(year, month, 0).getDate();
+  // Build array for each day in the payroll period
+  const start = new Date(startDate);
+  const end = new Date(endDate);
   const daysData = [];
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dayStr = `${yearMonth}-${String(day).padStart(2, '0')}`;
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const dayStr = d.toISOString().slice(0, 10);
     const dayEvents = eventsByDate.get(dayStr) || [];
     const status = salaryEngine.deriveDayStatus(dayEvents);
     daysData.push({
@@ -41,8 +45,8 @@ async function getMonthDaysData(year, month) {
   return daysData;
 }
 
-async function calculatePayroll(year, month) {
-  const daysData = await getMonthDaysData(year, month);
+async function calculatePayroll(year, month, existingDaysData) {
+  const daysData = existingDaysData || await getMonthDaysData(year, month);
   const baseSalary = salaryStore.getBaseSalary().baseSalary;
   const deductions = salaryStore.getDeductions();
   const allowances = salaryStore.getMonthlyAllowances(`${year}-${String(month).padStart(2, '0')}`);
@@ -69,7 +73,6 @@ async function updateDayStatus(date, status, { lateMinutes = 0, overtimeHours = 
     timestamp: new Date().toISOString(),
   };
   await eventStore.addEvent(event);
-  eventBus.publish(EVENT_TOPICS.PAYROLL_UPDATED, { date, status });
   return event;
 }
 
@@ -84,11 +87,18 @@ async function getMonthStats(year, month) {
   return { present, absent, late, vacation, sick, total: daysData.length, daysData };
 }
 
+async function getUsedVacationDays() {
+  const events = await eventStore.getEvents({ type: 'vacation' });
+  const uniqueDates = new Set(events.map(e => e.date).filter(Boolean));
+  return uniqueDates.size;
+}
+
 export const salaryService = {
   getMonthDaysData,
   calculatePayroll,
   updateDayStatus,
   getMonthStats,
+  getUsedVacationDays,
   // Expose store methods for settings
   getBaseSalary: salaryStore.getBaseSalary,
   setBaseSalary: salaryStore.setBaseSalary,
@@ -100,4 +110,7 @@ export const salaryService = {
   setMonthlyAllowances: salaryStore.setMonthlyAllowances,
   addMonthlyAllowance: salaryStore.addMonthlyAllowance,
   removeMonthlyAllowance: salaryStore.removeMonthlyAllowance,
+  // Vacation config
+  getVacationConfig: salaryStore.getVacationConfig,
+  setVacationConfig: salaryStore.setVacationConfig,
 };

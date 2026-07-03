@@ -82,6 +82,7 @@ const STRINGS = {
     allowanceName: 'Name',
     allowanceAmount: 'Amount',
     dateLabel: 'Date',
+    dayLabel: 'Day',
     dayStatus: 'Status',
     lateMinutes: 'Late (min)',
     overtimeHours: 'OT (hrs)',
@@ -94,7 +95,18 @@ const STRINGS = {
     ariaDashboard: 'Dashboard',
     ariaSettings: 'Settings',
     ariaLogs: 'Logs',
-    mainNav: 'Main navigation'
+    mainNav: 'Main navigation',
+    vacationSettings: 'Vacation Settings',
+    vacationAnnual: 'Annual (Regular)',
+    vacationCasual: 'Casual (Emergency)',
+    saveVacation: 'Save Vacation',
+    vacationBalance: 'Vacation Balance',
+    vacationType: 'Type',
+    vacationTotal: 'Total',
+    vacationUsed: 'Used',
+    vacationRemaining: 'Remaining',
+    annualLeave: 'Annual',
+    casualLeave: 'Casual'
   },
   ar: {
     appTitle: 'ShiftPro',
@@ -175,6 +187,7 @@ const STRINGS = {
     allowanceName: 'الاسم',
     allowanceAmount: 'المبلغ',
     dateLabel: 'التاريخ',
+    dayLabel: 'اليوم',
     dayStatus: 'الحالة',
     lateMinutes: 'تأخير (د)',
     overtimeHours: 'إضافي (س)',
@@ -187,7 +200,18 @@ const STRINGS = {
     ariaDashboard: 'الرئيسية',
     ariaSettings: 'الإعدادات',
     ariaLogs: 'السجلات',
-    mainNav: 'التنقل الرئيسي'
+    mainNav: 'التنقل الرئيسي',
+    vacationSettings: 'إعدادات الإجازات',
+    vacationAnnual: 'إجازة اعتيادية',
+    vacationCasual: 'إجازة عارضة',
+    saveVacation: 'حفظ الإجازات',
+    vacationBalance: 'رصيد الإجازات',
+    vacationType: 'النوع',
+    vacationTotal: 'الإجمالي',
+    vacationUsed: 'المستخدم',
+    vacationRemaining: 'المتبقي',
+    annualLeave: 'اعتيادية',
+    casualLeave: 'عارضة'
   }
 };
 

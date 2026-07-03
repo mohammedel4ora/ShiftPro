@@ -3,6 +3,8 @@
  * Renders the payroll UI components
  */
 
+import { i18n } from '../../infrastructure/i18n/index.js';
+
 function escapeHtml(str) {
   if (typeof str !== 'string') return str;
   return str
@@ -66,6 +68,7 @@ export function renderDayEditor(container, daysData, labels, onStatusChange) {
   let html = '<div class="day-editor">';
   html += '<div class="day-editor__header">';
   html += `<span>${escapeHtml(labels.headers.date)}</span>
+           <span>${escapeHtml(labels.headers.day)}</span>
            <span>${escapeHtml(labels.headers.status)}</span>
            <span>${escapeHtml(labels.headers.late)}</span>
            <span>${escapeHtml(labels.headers.ot)}</span>
@@ -73,9 +76,14 @@ export function renderDayEditor(container, daysData, labels, onStatusChange) {
   html += '</div>';
 
   for (const day of daysData) {
+    const dateObj = new Date(day.date + 'T00:00:00');
+    const dayOfWeek = dateObj.getDay();
+    const dayName = dateObj.toLocaleDateString(i18n.getLocale(), { weekday: 'short' });
     const selectedStatus = day.status || 'present';
-    html += `<div class="day-editor__row">
+    const isFriday = dayOfWeek === 5;
+    html += `<div class="day-editor__row${isFriday ? ' day-editor__row--friday' : ''}">
       <span class="day-editor__date">${escapeHtml(day.date)}</span>
+      <span class="day-editor__day-name">${escapeHtml(dayName)}</span>
       <div class="day-editor__status-group" data-date="${escapeHtml(day.date)}">
         <button type="button" class="status-btn ${selectedStatus === 'present' ? 'status-btn--active' : ''}" data-value="present">${escapeHtml(labels.statuses.present)}</button>
         <button type="button" class="status-btn ${selectedStatus === 'absent' ? 'status-btn--active' : ''}" data-value="absent">${escapeHtml(labels.statuses.absent)}</button>
@@ -168,7 +176,8 @@ export function renderAllowancesEditor(container, allowances, onChange) {
     const newRow = document.createElement('div');
     newRow.className = 'allowance-row';
     newRow.innerHTML = `<input type="text" class="allowance-name" placeholder="Allowance name"><input type="number" class="allowance-amount" placeholder="Amount"><button class="allowance-remove">\u2013</button>`;
-    container.insertBefore(newRow, container.querySelector('.allowance-add'));
+    const editorDiv = container.querySelector('.allowances-editor');
+    editorDiv.insertBefore(newRow, container.querySelector('.allowance-add'));
 
     newRow.querySelector('.allowance-remove').addEventListener('click', () => {
       newRow.remove();
@@ -190,4 +199,30 @@ function collectAllowances(container) {
       amount: parseFloat(row.querySelector('.allowance-amount')?.value) || 0,
     }))
     .filter((a) => a.name && a.amount > 0);
+}
+
+export function renderVacationBalance(container, config, usedDays) {
+  if (!container) return;
+  const total = config.annual + config.casual;
+  const remaining = Math.max(0, total - usedDays);
+  container.innerHTML = `
+    <div class="vacation-balance__grid">
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">${escapeHtml(i18n.t('vacationType', 'Type'))}</span>
+        <span class="vacation-balance__value">${escapeHtml(i18n.t('annualLeave', 'Annual'))} + ${escapeHtml(i18n.t('casualLeave', 'Casual'))}</span>
+      </div>
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">${escapeHtml(i18n.t('vacationTotal', 'Total'))}</span>
+        <span class="vacation-balance__value">${total}</span>
+      </div>
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">${escapeHtml(i18n.t('vacationUsed', 'Used'))}</span>
+        <span class="vacation-balance__value">${usedDays}</span>
+      </div>
+      <div class="vacation-balance__item vacation-balance__item--remaining">
+        <span class="vacation-balance__label">${escapeHtml(i18n.t('vacationRemaining', 'Remaining'))}</span>
+        <span class="vacation-balance__value">${remaining}</span>
+      </div>
+    </div>
+  `;
 }

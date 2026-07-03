@@ -5,6 +5,7 @@ export const STORAGE_KEYS = Object.freeze({
   GEOFENCE: 'shiftpulse-geofence',
   THRESHOLDS: 'shiftpulse-thresholds',
   VACATION: 'shiftpulse-vacation',
+  VACATION_CONFIG: 'shiftpulse-vacation-config',
   CLOCKED: 'shiftpulse-clocked',
   CLOCK_IN: 'shiftpulse-clockin',
   SALARY: 'shiftpulse-salary',               // { baseSalary: number }
@@ -31,6 +32,7 @@ export const DEFAULT_PREFS = Object.freeze({
 });
 
 export const DEFAULT_VACATION_DAYS = 30;
+export const DEFAULT_VACATION_CONFIG = Object.freeze({ annual: 30, casual: 15 });
 export const DEFAULT_LOCALE = 'en';
 export const DEFAULT_THEME = 'dark';
 export const SUPPORTED_LOCALES = Object.freeze(['en', 'ar']);

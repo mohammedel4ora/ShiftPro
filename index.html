@@ -35,7 +35,10 @@
     <!-- ========== HEADER ========== -->
     <header class="header">
       <div class="header__inner">
-        <h1 class="header__title" data-i18n="appTitle">ShiftPro</h1>
+        <h1 class="header__title">
+          <span class="header__shift-dot"></span>
+          <span data-i18n="appTitle">ShiftPro</span>
+        </h1>
         <div class="header__actions">
           <button class="icon-btn" id="localeToggle" data-i18n-aria="localeToggle" aria-label="Toggle language" title="AR/EN">
             <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -140,6 +143,14 @@
                 <span class="summary-item__label" data-i18n="overtime">Overtime</span>
               </div>
             </div>
+          </div>
+        </article>
+
+        <!-- Vacation Balance -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="vacationBalance">Vacation Balance</span>
+            <div id="vacation-balance-display" class="vacation-balance"></div>
           </div>
         </article>
       </section>
@@ -251,10 +262,31 @@
             <button class="btn btn--primary btn--full" id="saveDeductionsBtn"><span data-i18n="saveDeductions">Save Deductions</span></button>
           </div>
         </article>
+
+        <!-- Vacation Settings -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="vacationSettings">Vacation Settings</span>
+            <div class="form-group">
+              <label class="form-group__label" for="vacationAnnual" data-i18n="vacationAnnual">Annual (Regular)</label>
+              <input class="form-group__input" type="number" id="vacationAnnual" value="30" min="0" max="365">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="vacationCasual" data-i18n="vacationCasual">Casual (Emergency)</label>
+              <input class="form-group__input" type="number" id="vacationCasual" value="15" min="0" max="365">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveVacationBtn"><span data-i18n="saveVacation">Save Vacation</span></button>
+          </div>
+        </article>
       </section>
 
       <!-- ---- Section: Payroll ---- -->
       <section class="section" id="section-payroll" role="tabpanel" data-i18n-aria="ariaPayroll" aria-label="Payroll">
+        <div class="month-nav">
+          <button class="month-nav__btn" id="payrollPrevMonth" aria-label="Previous month">&lsaquo;</button>
+          <span class="month-nav__title" id="payrollMonthTitle">June 2026</span>
+          <button class="month-nav__btn" id="payrollNextMonth" aria-label="Next month">&rsaquo;</button>
+        </div>
         <article class="card card--payroll">
           <div class="card__body">
             <span class="card__label" data-i18n="payrollSummary">Payroll Summary</span>
@@ -336,7 +368,7 @@
         <span class="bottom-nav__label" data-i18n="navPayroll">Payroll</span>
       </button>
       <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="logs" aria-controls="section-logs">
-        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>></svg>
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
         <span class="bottom-nav__label" data-i18n="navLogs">Logs</span>
       </button>
     </nav>
