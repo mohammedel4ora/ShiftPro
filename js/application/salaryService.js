@@ -58,6 +58,13 @@ async function calculatePayroll(year, month, existingDaysData) {
     deductions,
   });
 
+  const vacationConfig = salaryStore.getVacationConfig();
+  const usedDays = await getUsedVacationDays();
+  const totalVacation = vacationConfig.annual + vacationConfig.casual;
+  result.vacationTotal = totalVacation;
+  result.vacationUsed = usedDays;
+  result.vacationRemaining = Math.max(0, totalVacation - usedDays);
+
   return result;
 }
 

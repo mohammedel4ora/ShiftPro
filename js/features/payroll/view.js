@@ -56,6 +56,10 @@ export function renderPayrollSummary(container, data) {
         <span class="payroll-summary__label">Total Deductions</span>
         <span class="payroll-summary__value">${escapeHtml(data.totalDeductions.toFixed(2))}</span>
       </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Vacation Balance</span>
+        <span class="payroll-summary__value">${escapeHtml(data.vacationRemaining ?? '-')} / ${escapeHtml(data.vacationTotal ?? '-')}</span>
+      </div>
     </div>
   `;
 
