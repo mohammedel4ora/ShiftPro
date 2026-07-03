@@ -202,6 +202,9 @@ input {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .section {
@@ -1334,8 +1337,73 @@ input {
 }
 
 /* ==========================================================
-   13. RESPONSIVE (360px - 480px)
-   ========================================================== */
+    13. RESPONSIVE
+    ========================================================== */
+
+/* 360px and below — smallest supported */
+@media (max-width: 360px) {
+  :root {
+    --header-height: 48px;
+    --nav-height: 52px;
+    --space-md: 10px;
+    --space-sm: 5px;
+    --space-lg: 16px;
+  }
+
+  .header__title {
+    font-size: 1rem;
+  }
+
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .timer__value {
+    font-size: 1.5rem;
+  }
+
+  .month-nav__title {
+    font-size: 1rem;
+    min-width: 120px;
+  }
+
+  .day-editor__header,
+  .day-editor__row {
+    grid-template-columns: 0.6fr 0.35fr 2.8fr 0.8fr 0.8fr 1.8fr;
+    gap: 2px;
+    font-size: 0.65rem;
+  }
+
+  .status-btn {
+    font-size: 0.6rem;
+    padding: 3px 1px;
+  }
+
+  .payroll-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .vacation-balance__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-nav__label {
+    font-size: 0.6rem;
+  }
+
+  .bottom-nav__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .allowance-amount,
+  .deduction-amount {
+    width: 80px;
+  }
+}
+
+/* 361px - 480px — small phones */
 @media (max-width: 480px) {
   :root {
     --header-height: 52px;
@@ -1365,21 +1433,87 @@ input {
   .logs-table__row {
     grid-template-columns: 2.5fr 1fr 1.5fr 1.5fr 1.5fr;
   }
-}
 
-@media (max-width: 380px) {
-  .timer__value {
-    font-size: 1.75rem;
-  }
-
-  .summary-grid {
+  .payroll-summary {
     grid-template-columns: 1fr 1fr;
   }
 
-  .logs-table__header,
-  .logs-table__row {
-    font-size: 0.75rem;
-    grid-template-columns: 2fr 1fr 1.5fr 1.5fr 1.5fr;
+  .vacation-balance__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .day-editor {
+    max-height: 300px;
+  }
+
+  .day-editor__header,
+  .day-editor__row {
+    grid-template-columns: 0.65fr 0.35fr 2.8fr 0.8fr 0.8fr 2fr;
+    gap: 3px;
+    font-size: 0.6875rem;
+  }
+
+  .status-btn {
+    font-size: 0.625rem;
+    padding: 3px 1px;
+  }
+
+  .day-editor__date,
+  .day-editor__day-name {
+    font-size: 0.6875rem;
+  }
+}
+
+/* 481px - 640px — large phones / small tablets */
+@media (min-width: 481px) and (max-width: 640px) {
+  :root {
+    --space-md: 14px;
+  }
+
+  .quick-actions {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .day-editor {
+    max-height: 350px;
+  }
+}
+
+/* 641px - 1024px — tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --space-md: 16px;
+  }
+
+  .main {
+    max-width: 640px;
+  }
+
+  .quick-actions {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .day-editor {
+    max-height: 400px;
+  }
+}
+
+/* 1025px+ — desktop */
+@media (min-width: 1025px) {
+  .main {
+    max-width: 720px;
+  }
+
+  #app {
+    padding-top: calc(var(--header-height) + var(--safe-area-top));
+    padding-bottom: var(--safe-area-bottom);
+  }
+
+  .bottom-nav {
+    max-width: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 }
 
