@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "snapshot",
+    "stepIndex": 20,
+    "summary": "Step 20 'Work Location 'Longitude' input is visible.' failed. Error: TEST BLOCKED: 0 assertion(s) had degraded descriptions and 3 assertion(s) were dropped from the plan (plan_assertions=15, parsed=12). Assertion descriptions could not be matched to plan steps — enable TESTSPRITE_VERDICT_DOWNGRADE_DEGRADED_ASSERTIONS to block on this condition.",
+    "path": "steps/20-snapshot.html"
+  }
+]

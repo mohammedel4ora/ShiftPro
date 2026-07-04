@@ -1,0 +1,56 @@
+{
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "type": "frontend",
+  "name": "Mobile Responsive UX - Late and Overtime Fields",
+  "description": "Verify the payroll day editor shows late minutes and overtime hours fields clearly on mobile viewport, and overall responsive layout functions correctly",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Set browser viewport to 375x812 pixels (iPhone-like mobile size)"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the app loads and fits within the mobile viewport without horizontal scrolling"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Payroll navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Payroll section is visible with month navigation showing current month title between previous and next arrow buttons"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the daily history card is visible and contains a table or list with date entries"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the day editor shows a 'Late Minutes' input field or label that is clearly readable on mobile"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the day editor shows an 'Overtime Hours' input field or label that is clearly readable on mobile"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the allowances editor section is visible below the day editor"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Settings navigation button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings cards stack vertically on mobile viewport (work location, shift thresholds, preferences, financial settings, deductions, vacation settings)"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Dashboard navigation button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Dashboard timer, status card, quick actions grid, weekly summary, and vacation balance all fit within mobile viewport"
+    }
+  ]
+}

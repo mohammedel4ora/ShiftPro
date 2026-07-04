@@ -1,0 +1,1086 @@
+<html lang="en" dir="ltr" data-theme="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon-192.svg">
+  <title>ShiftPro — Personal Shift Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap">
+  <style data-original-href="https://whitesmoke-goldfish-494647.hostingersite.com/css/style.css">:root { --surface-dim: #0b1326; --surface: #0f172a; --surface-bright: #31394d; --surface-container-lowest: #060e20; --surface-container-low: #131b2e; --surface-container: #1e293b; --surface-container-high: #222a3d; --surface-container-highest: #2d3449; --surface-variant: #2d3449; --on-surface: #e2e8f0; --on-surface-variant: #94a3b8; --on-surface-muted: #64748b; --primary: #38bdf8; --on-primary: #0c4a6e; --primary-container: #0ea5e9; --on-primary-container: #e0f2fe; --secondary: #fbbf24; --on-secondary: #78350f; --secondary-container: #f59e0b; --on-secondary-container: #fef3c7; --tertiary: #818cf8; --on-tertiary: #312e81; --tertiary-container: #6366f1; --on-tertiary-container: #e0e7ff; --success: #34d399; --on-success: #064e3b; --success-container: #10b981; --on-success-container: #d1fae5; --error: #f87171; --on-error: #7f1d1d; --error-container: #ef4444; --on-error-container: #fee2e2; --outline: #475569; --outline-variant: #334155; --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3); --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4); --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5); --font-family: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-display: 700 2rem/1.2 var(--font-family); --font-headline: 600 1.5rem/1.3 var(--font-family); --font-title: 600 1.125rem/1.4 var(--font-family); --font-body-lg: 400 1rem/1.5 var(--font-family); --font-body: 400 0.875rem/1.5 var(--font-family); --font-label: 500 0.75rem/1.3 var(--font-family); --font-label-sm: 500 0.6875rem/1.3 var(--font-family); --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --radius-sm: 6px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px; --safe-area-top: env(safe-area-inset-top, 0px); --safe-area-bottom: env(safe-area-inset-bottom, 0px); --nav-height: 64px; --header-height: 56px; --shift-gradient: linear-gradient(90deg, #34d399 0%, #38bdf8 50%, #818cf8 100%); --transition-fast: 150ms ease; --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1); --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+[data-theme="light"] { --surface-dim: #f8fafc; --surface: #ffffff; --surface-bright: #f1f5f9; --surface-container-lowest: #ffffff; --surface-container-low: #f8fafc; --surface-container: #f1f5f9; --surface-container-high: #e2e8f0; --surface-container-highest: #cbd5e1; --surface-variant: #e2e8f0; --on-surface: #0f172a; --on-surface-variant: #475569; --on-surface-muted: #94a3b8; --primary: #0284c7; --on-primary: #ffffff; --primary-container: #38bdf8; --on-primary-container: #0c4a6e; --secondary: #d97706; --on-secondary: #ffffff; --secondary-container: #fbbf24; --on-secondary-container: #78350f; --tertiary: #4f46e5; --on-tertiary: #ffffff; --tertiary-container: #818cf8; --on-tertiary-container: #1e1b4b; --success: #059669; --on-success: #ffffff; --success-container: #34d399; --on-success-container: #064e3b; --error: #dc2626; --on-error: #ffffff; --error-container: #f87171; --on-error-container: #7f1d1d; --outline: #cbd5e1; --outline-variant: #e2e8f0; --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05); --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12); }
+*, ::before, ::after { box-sizing: border-box; margin: 0px; padding: 0px; }
+html { font-size: 16px; text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
+body { font: var(--font-body); color: var(--on-surface); background: var(--surface-dim); min-height: 100dvh; overflow-x: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; -webkit-tap-highlight-color: transparent; }
+input { font: inherit; color: inherit; border: none; outline: none; background: none; }
+#app { display: flex; flex-direction: column; min-height: 100dvh; padding-top: calc(var(--header-height) + var(--safe-area-top)); padding-bottom: calc(var(--nav-height) + var(--safe-area-bottom)); }
+.main { flex: 1 1 0%; padding: var(--space-md); overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-md); width: 100%; max-width: 640px; margin: 0px auto; }
+.section { display: none; flex-direction: column; gap: var(--space-md); animation: fadeIn var(--transition-normal); }
+.section--active { display: flex; }
+@keyframes fadeIn { 
+  0% { opacity: 0; transform: scale(0.98) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0px); }
+}
+.header { position: fixed; top: 0px; left: 0px; right: 0px; z-index: 100; height: calc(var(--header-height) + var(--safe-area-top)); padding-top: var(--safe-area-top); background: var(--surface); border-bottom: 1px solid var(--outline-variant); backdrop-filter: blur(12px); }
+.header::after { content: ""; position: absolute; bottom: -1px; left: 0px; right: 0px; height: 2px; background: var(--shift-gradient); opacity: 0.6; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-height); padding: 0 var(--space-md); }
+.header__title { display: flex; align-items: center; gap: var(--space-sm); font: var(--font-title); letter-spacing: -0.02em; }
+.header__shift-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--success); box-shadow: 0 0 6px var(--success); animation: 2s ease-in-out 0s infinite normal none running dotPulse; }
+@keyframes dotPulse { 
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+.header__actions { display: flex; align-items: center; gap: var(--space-xs); }
+.icon-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-full); color: var(--on-surface-variant); transition: background var(--transition-fast), color var(--transition-fast); }
+.icon-btn:hover { background: var(--surface-container-high); color: var(--on-surface); }
+.icon-btn__icon { width: 22px; height: 22px; }
+.card { background: var(--surface-container); border-radius: var(--radius-lg); border: 1px solid var(--outline-variant); overflow: hidden; transition: box-shadow var(--transition-normal), transform var(--transition-normal); }
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.card__body { padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-sm); }
+.card__label { font: var(--font-label); color: var(--on-surface-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.card__title { font: var(--font-headline); color: var(--on-surface); }
+.card__badge { display: inline-flex; align-items: center; gap: var(--space-xs); padding: 3px 12px; border-radius: var(--radius-full); font: var(--font-label-sm); text-transform: uppercase; letter-spacing: 0.05em; }
+.card__badge::before { content: ""; width: 6px; height: 6px; border-radius: var(--radius-full); background: currentcolor; opacity: 0.6; }
+.card__badge--morning::before { box-shadow: currentcolor 0px 0px 4px; }
+.card__badge--morning { background: var(--success-container); color: var(--on-success); }
+.card__badge--evening { background: var(--secondary-container); color: var(--on-secondary); }
+.card__badge--night { background: var(--tertiary-container); color: var(--on-tertiary); }
+.card--quick { border-left: 4px solid var(--primary); }
+.card--summary { border-left: 4px solid var(--secondary); }
+.card--table { border-left: 4px solid var(--tertiary); }
+.card--payroll { border-left: 4px solid var(--success); }
+.card--status { position: relative; border-left: 4px solid var(--success); }
+.card--status .card__title { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 1.5rem; }
+.card__status-indicator { position: absolute; top: var(--space-md); right: var(--space-md); width: 10px; height: 10px; border-radius: var(--radius-full); background: var(--on-surface-muted); }
+.card__status-indicator--active { background: var(--success); box-shadow: 0 0 10px var(--success); animation: 2s ease-in-out 0s infinite normal none running indicatorPulse; }
+@keyframes indicatorPulse { 
+  0%, 100% { box-shadow: 0 0 6px var(--success); }
+  50% { box-shadow: 0 0 14px var(--success); }
+}
+.card--timer .card__body { padding-bottom: 0px; }
+.timer { display: flex; align-items: baseline; gap: var(--space-sm); }
+.timer__value { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 2.5rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--on-surface); text-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent); }
+.timer__unit { font: var(--font-body); color: var(--on-surface-muted); }
+.timer__meta { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+.timer__meta-item { font: var(--font-body); color: var(--on-surface-variant); display: flex; align-items: center; gap: var(--space-xs); }
+.timer__meta-icon { width: 14px; height: 14px; opacity: 0.6; }
+.card__action-btn { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); width: 100%; padding: 14px; font: var(--font-label); text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background var(--transition-fast), opacity var(--transition-fast); }
+.card__action-btn svg { width: 18px; height: 18px; }
+.card__action-btn--primary { background: var(--primary); color: var(--on-primary); }
+.card__action-btn--primary:hover { opacity: 0.9; }
+.card__action-btn--danger { background: var(--error-container); color: var(--on-error); }
+.card__action-btn--danger:hover { opacity: 0.9; }
+.quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm); }
+.quick-actions__btn { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-sm); border-radius: var(--radius-md); border: 1px solid var(--outline-variant); background: var(--surface); font: var(--font-label-sm); color: var(--on-surface-variant); transition: all var(--transition-fast); -webkit-tap-highlight-color: transparent; }
+.quick-actions__btn:active { transform: scale(0.95); }
+.quick-actions__btn svg { width: 20px; height: 20px; }
+.quick-actions__btn:hover { border-color: var(--primary); color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.quick-actions__btn--sick:hover { border-color: var(--error); color: var(--error); background: color-mix(in srgb, var(--error) 8%, transparent); }
+.quick-actions__btn--vacation:hover { border-color: var(--secondary); color: var(--secondary); background: color-mix(in srgb, var(--secondary) 8%, transparent); }
+.quick-actions__btn--overtime:hover { border-color: var(--tertiary); color: var(--tertiary); background: color-mix(in srgb, var(--tertiary) 8%, transparent); }
+.quick-actions__btn--remote:hover { border-color: var(--success); color: var(--success); background: color-mix(in srgb, var(--success) 8%, transparent); }
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); }
+.summary-grid--large { grid-template-columns: repeat(3, 1fr); }
+.summary-item { display: flex; flex-direction: column; align-items: center; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-variant); }
+.summary-item--highlight { background: color-mix(in srgb, var(--primary) 15%, var(--surface-variant)); }
+.summary-item--accent { background: color-mix(in srgb, var(--secondary) 15%, var(--surface-variant)); }
+.summary-item__value { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.summary-item__label { font: var(--font-label-sm); color: var(--on-surface-muted); }
+.form-group { display: flex; flex-direction: column; gap: var(--space-xs); }
+.form-group__label { font: var(--font-label); color: var(--on-surface-variant); }
+.form-group__input { padding: 12px var(--space-sm); border: 1px solid var(--outline); border-radius: var(--radius-md); background: var(--surface); color: var(--on-surface); font: var(--font-body); transition: border-color var(--transition-fast); }
+.form-group__input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent); }
+.form-group + .form-group { margin-top: var(--space-sm); }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm) 0; font: var(--font-body); }
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0px; height: 0px; }
+.toggle__slider { position: absolute; inset: 0px; background: var(--outline); border-radius: var(--radius-full); transition: background var(--transition-fast); cursor: pointer; }
+.toggle__slider::before { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: var(--on-surface); border-radius: var(--radius-full); transition: transform var(--transition-bounce); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px; }
+.toggle input:checked + .toggle__slider { background: var(--shift-gradient); }
+.toggle input:checked + .toggle__slider::before { transform: translateX(20px); background: white; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm); padding: 12px var(--space-lg); border-radius: var(--radius-md); font: var(--font-label); text-transform: uppercase; letter-spacing: 0.05em; transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast); cursor: pointer; border: none; -webkit-tap-highlight-color: transparent; }
+.btn:active { transform: scale(0.97); }
+.btn--primary { background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: var(--on-primary); box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 30%, transparent); }
+.btn--primary:hover { box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 40%, transparent); }
+.btn--secondary { background: var(--surface-container-high); color: var(--on-surface); border: 1px solid var(--outline-variant); }
+.btn--secondary:hover { background: var(--surface-container-highest); }
+.btn--full { width: 100%; }
+.btn + .btn { margin-top: var(--space-sm); }
+.logs-table { overflow-x: auto; }
+.logs-table__body { display: contents; }
+.logs-table__cell { display: block; }
+.logs-table__cell--date { color: var(--on-surface-variant); font-size: 0.8125rem; }
+.logs-table__header, .logs-table__row { display: grid; grid-template-columns: 3fr 1fr 1.5fr 1.5fr 1.5fr; gap: var(--space-xs); padding: var(--space-sm) 0; align-items: center; }
+.logs-table__header { border-bottom: 1px solid var(--outline-variant); font: var(--font-label-sm); color: var(--on-surface-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.logs-table__row { border-bottom: 1px solid var(--outline-variant); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; transition: background var(--transition-fast); }
+.logs-table__row:nth-child(2n) { background: color-mix(in srgb, var(--surface-container) 97%, var(--primary)); }
+.logs-table__row:hover { background: color-mix(in srgb, var(--surface-container-high) 60%, transparent); }
+.logs-table__row:last-child { border-bottom: none; }
+.logs-table__cell--hours { font-variant-numeric: tabular-nums; text-align: right; }
+.logs-table__cell--time { font-variant-numeric: tabular-nums; }
+.logs-table__cell--shift { display: flex; justify-content: center; }
+.badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: var(--radius-full); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-stretch: ; font-size: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-weight: 700; }
+.badge--morning { background: var(--success-container); color: var(--on-success); }
+.badge--evening { background: var(--secondary-container); color: var(--on-secondary); }
+.badge--night { background: var(--tertiary-container); color: var(--on-tertiary); }
+.badge--sick { background: var(--error-container, #fce4ec); color: var(--on-error, #c62828); }
+.badge--vacation { background: var(--primary-container, #e3f2fd); color: var(--on-primary, #1565c0); }
+.badge--overtime { background: var(--secondary-container); color: var(--on-secondary); }
+.badge--remote { background: var(--surface-variant, #e8e8e8); color: var(--on-surface, #1a1a1a); }
+.bottom-nav { position: fixed; bottom: 0px; left: 0px; right: 0px; z-index: 100; height: calc(var(--nav-height) + var(--safe-area-bottom)); padding-bottom: var(--safe-area-bottom); display: flex; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(16px); border-top: 1px solid var(--outline-variant); }
+.bottom-nav__item { flex: 1 1 0%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-xs) 0; color: var(--on-surface-muted); transition: color var(--transition-fast), transform var(--transition-fast); position: relative; }
+.bottom-nav__item:active { transform: scale(0.92); }
+.bottom-nav__item::before { content: ""; position: absolute; top: 4px; left: 50%; transform: translateX(-50%) scaleX(0); width: 32px; height: 3px; border-radius: var(--radius-full); background: var(--shift-gradient); transition: transform var(--transition-normal); }
+.bottom-nav__item--active { color: var(--primary); }
+.bottom-nav__item--active .bottom-nav__icon { stroke-width: 2.5; }
+.bottom-nav__item--active::before { transform: translateX(-50%) scaleX(1); }
+.bottom-nav__icon { width: 24px; height: 24px; transition: stroke-width var(--transition-fast); }
+.bottom-nav__label { font: var(--font-label-sm); letter-spacing: 0.03em; }
+.month-nav { display: flex; align-items: center; justify-content: center; gap: var(--space-md); padding: var(--space-sm) 0; }
+.month-nav__btn { width: 40px; height: 40px; border-radius: var(--radius-full); border: 1px solid var(--outline-variant); background: var(--surface-container); color: var(--on-surface-variant); font-size: 1.25rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.month-nav__btn:hover { background: var(--surface-container-high); color: var(--on-surface); }
+.month-nav__btn:active { transform: scale(0.92); }
+.month-nav__title { font: var(--font-headline); min-width: 160px; text-align: center; color: var(--on-surface); }
+.vacation-balance__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+.vacation-balance__item { display: flex; flex-direction: column; gap: 2px; padding: var(--space-sm); background: var(--surface-variant); border-radius: var(--radius-sm); }
+.vacation-balance__item--remaining { grid-column: 1 / -1; background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 20%, var(--surface-variant)), color-mix(in srgb, var(--secondary) 8%, var(--surface-variant))); border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent); }
+.vacation-balance__label { font: var(--font-label-sm); color: var(--on-surface-muted); }
+.vacation-balance__value { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 1.125rem; font-variant-numeric: tabular-nums; }
+.vacation-balance__item--remaining .vacation-balance__value { font-size: 1.5rem; }
+.payroll-summary { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+.payroll-summary__item { display: flex; flex-direction: column; gap: 2px; padding: var(--space-sm); background: var(--surface-variant); border-radius: var(--radius-sm); transition: background var(--transition-fast); }
+.payroll-summary__item--net { grid-column: 1 / -1; background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 20%, var(--surface-variant)), color-mix(in srgb, var(--primary) 8%, var(--surface-variant))); border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent); }
+.payroll-summary__item--positive { color: var(--success); }
+.payroll-summary__item--negative { color: var(--error); }
+.payroll-summary__label { font: var(--font-label-sm); color: var(--on-surface-muted); }
+.payroll-summary__value { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 1.125rem; font-variant-numeric: tabular-nums; }
+.payroll-summary__item--net .payroll-summary__value { font-size: 1.5rem; }
+.payroll-summary__item--net .payroll-summary__label { color: var(--primary); }
+.day-editor { max-height: 400px; overflow-y: auto; border: 1px solid var(--outline-variant); border-radius: var(--radius-md); }
+.day-editor__header { display: grid; grid-template-columns: 0.7fr 0.4fr 3.2fr 1fr 1fr 2.2fr; gap: var(--space-xs); padding: var(--space-sm); font: var(--font-label-sm); color: var(--on-surface-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--outline-variant); background: var(--surface-container-low); position: sticky; top: 0px; }
+.day-editor__row { display: grid; grid-template-columns: 0.7fr 0.4fr 3.2fr 1fr 1fr 2.2fr; gap: var(--space-xs); padding: var(--space-xs) var(--space-sm); align-items: center; border-bottom: 1px solid var(--outline-variant); }
+.day-editor__row:last-child { border-bottom: none; }
+.day-editor__row--friday { background: color-mix(in srgb, rgb(239, 68, 68) 12%, transparent); border-left: 3px solid rgb(239, 68, 68); }
+.day-editor__date { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; font-variant-numeric: tabular-nums; color: var(--on-surface-variant); }
+.day-editor__day-name { font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.75rem; color: var(--on-surface-muted); }
+.day-editor__status-group { display: flex; gap: 4px; width: 100%; }
+.status-btn { flex: 1 1 0%; padding: 4px 2px; border: 1px solid var(--outline-variant); border-radius: var(--radius-sm); background: var(--surface-container); color: var(--on-surface-variant); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.6875rem; cursor: pointer; text-align: center; transition: all var(--transition-fast); white-space: nowrap; }
+.status-btn:hover { background: var(--surface-container-high); border-color: var(--outline); }
+.status-btn--active[data-value="present"] { background: var(--success-container) !important; color: var(--on-success-container) !important; border-color: var(--success-container) !important; }
+.status-btn--active[data-value="absent"] { background: var(--error-container) !important; color: var(--on-error-container) !important; border-color: var(--error-container) !important; }
+.status-btn--active[data-value="late"] { background: var(--secondary-container) !important; color: var(--on-secondary-container) !important; border-color: var(--secondary-container) !important; }
+.status-btn--active[data-value="vacation"] { background: var(--primary-container) !important; color: var(--on-primary-container) !important; border-color: var(--primary-container) !important; }
+.status-btn--active[data-value="sick"] { background: var(--tertiary-container) !important; color: var(--on-tertiary-container) !important; border-color: var(--tertiary-container) !important; }
+.day-editor__late, .day-editor__ot { width: 100%; padding: 4px 6px; border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.day-editor__note { width: 100%; padding: 4px 6px; border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.75rem; }
+.allowances-editor { display: flex; flex-direction: column; gap: var(--space-sm); }
+.allowances-editor h3 { font: var(--font-title); color: var(--on-surface); }
+.allowance-row { display: flex; gap: var(--space-sm); align-items: center; }
+.allowance-name { flex: 1 1 0%; padding: 8px var(--space-sm); border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; }
+.allowance-amount { width: 100px; padding: 8px var(--space-sm); border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.allowance-remove, .deduction-remove { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--error-container); color: var(--on-error); font-size: 1.25rem; font-weight: 700; border: none; cursor: pointer; flex-shrink: 0; transition: opacity var(--transition-fast); }
+.allowance-remove:hover, .deduction-remove:hover { opacity: 0.8; }
+.allowance-add { padding: 10px; border: 1px dashed var(--outline); border-radius: var(--radius-md); background: transparent; color: var(--primary); font: var(--font-label); cursor: pointer; transition: background var(--transition-fast); }
+.allowance-add:hover { background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.deduction-row { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+.deduction-name { flex: 1 1 0%; padding: 8px var(--space-sm); border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-numeric: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; }
+.deduction-amount { width: 100px; padding: 8px var(--space-sm); border: 1px solid var(--outline); border-radius: var(--radius-sm); background: var(--surface); color: var(--on-surface); font-style: ; font-variant-ligatures: ; font-variant-caps: ; font-variant-east-asian: ; font-variant-alternates: ; font-variant-position: ; font-variant-emoji: ; font-weight: ; font-stretch: ; line-height: ; font-family: ; font-optical-sizing: ; font-size-adjust: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.main::-webkit-scrollbar { width: 3px; }
+.main::-webkit-scrollbar-track { background: transparent; }
+.main::-webkit-scrollbar-thumb { background: var(--outline); border-radius: var(--radius-full); }
+@media (max-width: 360px) {
+  :root { --header-height: 48px; --nav-height: 52px; --space-md: 10px; --space-sm: 5px; --space-lg: 16px; }
+  .header__title { font-size: 1rem; }
+  .icon-btn { width: 36px; height: 36px; }
+  .timer__value { font-size: 1.5rem; }
+  .month-nav__title { font-size: 1rem; min-width: 120px; }
+  .day-editor__header, .day-editor__row { grid-template-columns: 0.6fr 0.35fr 2.8fr 0.8fr 0.8fr 1.8fr; gap: 2px; font-size: 0.65rem; }
+  .status-btn { font-size: 0.6rem; padding: 3px 1px; }
+  .payroll-summary { grid-template-columns: 1fr; }
+  .vacation-balance__grid { grid-template-columns: 1fr; }
+  .bottom-nav__label { font-size: 0.6rem; }
+  .bottom-nav__icon { width: 20px; height: 20px; }
+  .allowance-amount, .deduction-amount { width: 80px; }
+}
+@media (max-width: 480px) {
+  :root { --header-height: 52px; --nav-height: 56px; --space-md: 12px; --space-sm: 6px; --space-lg: 20px; }
+  .timer__value { font-size: 2rem; }
+  .quick-actions { grid-template-columns: repeat(2, 1fr); }
+  .summary-grid--large { grid-template-columns: 1fr 1fr; }
+  .summary-grid--large .summary-item:last-child { grid-column: 1 / -1; }
+  .logs-table__header, .logs-table__row { grid-template-columns: 2.5fr 1fr 1.5fr 1.5fr 1.5fr; }
+  .payroll-summary { grid-template-columns: 1fr 1fr; }
+  .vacation-balance__grid { grid-template-columns: 1fr 1fr; }
+  .day-editor { max-height: 300px; }
+  .day-editor__header, .day-editor__row { grid-template-columns: 0.65fr 0.35fr 2.8fr 0.8fr 0.8fr 2fr; gap: 3px; font-size: 0.6875rem; }
+  .status-btn { font-size: 0.625rem; padding: 3px 1px; }
+  .day-editor__date, .day-editor__day-name { font-size: 0.6875rem; }
+}
+@media (min-width: 481px) and (max-width: 640px) {
+  :root { --space-md: 14px; }
+  .quick-actions { grid-template-columns: repeat(4, 1fr); }
+  .day-editor { max-height: 350px; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root { --space-md: 16px; }
+  .main { max-width: 640px; }
+  .quick-actions { grid-template-columns: repeat(4, 1fr); }
+  .day-editor { max-height: 400px; }
+}
+@media (min-width: 1025px) {
+  .main { max-width: 720px; }
+  #app { padding-top: calc(var(--header-height) + var(--safe-area-top)); padding-bottom: var(--safe-area-bottom); }
+  .bottom-nav { max-width: 480px; left: 50%; transform: translateX(-50%); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+}
+[dir="rtl"] { --font-family: 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .header__inner { }
+[dir="rtl"] .card--quick { border-left: none; border-right: 4px solid var(--primary); }
+[dir="rtl"] .card--summary { border-left: none; border-right: 4px solid var(--secondary); }
+[dir="rtl"] .card--table { border-left: none; border-right: 4px solid var(--tertiary); }
+[dir="rtl"] .card--payroll { border-left: none; border-right: 4px solid var(--success); }
+[dir="rtl"] .card--status { border-left: none; border-right: 4px solid var(--success); }
+[dir="rtl"] .card__status-indicator { right: auto; left: var(--space-md); }
+[dir="rtl"] .timer__meta-item svg { }
+[dir="rtl"] .toggle__slider::before { left: auto; right: 2px; }
+[dir="rtl"] .toggle input:checked + .toggle__slider::before { transform: translateX(-20px); }
+[dir="rtl"] .logs-table__cell--hours { text-align: left; }
+[dir="rtl"] .logs-table__cell--date { text-align: right; }
+[dir="rtl"] #detectLocationBtn svg { margin-right: 0px; margin-left: 6px; }
+[dir="rtl"] .bottom-nav__item::before { }
+[dir="rtl"] .header__actions { }
+[dir="rtl"] .payroll-summary__item--negative { }
+[dir="rtl"] .day-editor__header, [dir="rtl"] .day-editor__row { }
+[dir="rtl"] .allowance-row { }
+[dir="rtl"] .deduction-row { }
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}</style>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    // FOUC-prevention: apply persisted locale/dir before paint
+    (function () {
+      try {
+        var saved = localStorage.getItem('shiftpulse-locale');
+        var nav = (navigator.language || 'en').toLowerCase();
+        var lang = (saved && (saved === 'en' || saved === 'ar'))
+          ? saved
+          : (nav.indexOf('ar') === 0 ? 'ar' : 'en');
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      } catch (_) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="header__title">
+          <span class="header__shift-dot"></span>
+          <span data-i18n="appTitle">ShiftPro</span>
+        </h1>
+        <div class="header__actions">
+          <button class="icon-btn" id="localeToggle" data-i18n-aria="localeToggle" aria-label="Toggle language" title="AR/EN">
+            <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" id="themeToggle" data-i18n-aria="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-btn__icon" id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button class="icon-btn" data-i18n-aria="notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main">
+      <!-- ---- Section: Dashboard ---- -->
+      <section class="section section--active" id="section-dashboard" role="tabpanel" data-i18n-aria="ariaDashboard" aria-label="Dashboard">
+        <!-- Status Card -->
+        <article class="card card--status">
+          <div class="card__status-indicator "></div>
+          <div class="card__body">
+            <span class="card__label" data-i18n="currentStatus">Current Status</span>
+            <p class="card__title" data-i18n="insideWorkArea">Outside Work Area</p>
+            <span class="card__badge badge--evening" data-i18n="morningShift">Evening Shift</span>
+          </div>
+        </article>
+
+        <!-- Timer Card -->
+        <article class="card card--timer">
+          <div class="card__body">
+            <span class="card__label" data-i18n="todaysHours">Today's Hours</span>
+            <div class="timer">
+              <span class="timer__value" id="timerDisplay">00:00:00</span>
+              <span class="timer__unit" data-i18n="hoursWorked">hours worked</span>
+            </div>
+            <div class="timer__meta">
+              <span class="timer__meta-item">
+                <svg class="timer__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span data-i18n="clockIn">Clock In</span>: <strong>07:58 AM</strong>
+              </span>
+              <span class="timer__meta-item">
+                <svg class="timer__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span data-i18n="break">Break</span>: <strong>00:28</strong>
+              </span>
+            </div>
+          </div>
+          <button class="card__action-btn card__action-btn--primary" id="clockBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Clock In</button>
+        </article>
+
+        <!-- Quick Action Card -->
+        <article class="card card--quick">
+          <div class="card__body">
+            <span class="card__label" data-i18n="quickLog">Quick Log</span>
+            <div class="quick-actions">
+              <button class="quick-actions__btn quick-actions__btn--sick" data-type="sick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                <span data-i18n="sickLeave">Sick Leave</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--vacation" data-type="vacation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span data-i18n="vacation">Vacation</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--overtime" data-type="overtime">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span data-i18n="overtime">Overtime</span>
+              </button>
+              <button class="quick-actions__btn quick-actions__btn--remote" data-type="remote">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <span data-i18n="remote">Remote</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Weekly Summary -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="thisWeek">This Week</span>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span class="summary-item__value">--:--</span>
+                <span class="summary-item__label" data-i18n="hours">Hours</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">0</span>
+                <span class="summary-item__label" data-i18n="shifts">Shifts</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">--:--</span>
+                <span class="summary-item__label" data-i18n="overtime">Overtime</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Vacation Balance -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="vacationBalance">Vacation Balance</span>
+            <div id="vacation-balance-display" class="vacation-balance">
+    <div class="vacation-balance__grid">
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">Type</span>
+        <span class="vacation-balance__value">Annual + Casual</span>
+      </div>
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">Total</span>
+        <span class="vacation-balance__value">45</span>
+      </div>
+      <div class="vacation-balance__item">
+        <span class="vacation-balance__label">Used</span>
+        <span class="vacation-balance__value">0</span>
+      </div>
+      <div class="vacation-balance__item vacation-balance__item--remaining">
+        <span class="vacation-balance__label">Remaining</span>
+        <span class="vacation-balance__value">45</span>
+      </div>
+    </div>
+  </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Settings ---- -->
+      <section class="section" id="section-settings" role="tabpanel" data-i18n-aria="ariaSettings" aria-label="Settings">
+        <!-- Work Location -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="workLocation">Work Location</span>
+            <div class="form-group">
+              <label class="form-group__label" for="lat" data-i18n="latitude">Latitude</label>
+              <input class="form-group__input" type="text" id="lat" value="25.2048" placeholder="e.g. 25.2048">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="lng" data-i18n="longitude">Longitude</label>
+              <input class="form-group__input" type="text" id="lng" value="55.2708" placeholder="e.g. 55.2708">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="radius" data-i18n="geofenceRadius">Geofence Radius (meters)</label>
+              <input class="form-group__input" type="number" id="radius" value="150" min="50" max="1000">
+            </div>
+            <button class="btn btn--secondary btn--full" id="detectLocationBtn" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+              <span data-i18n="detectLocation">Detect Current Location</span>
+            </button>
+            <button class="btn btn--primary btn--full" id="saveLocationBtn"><span data-i18n="saveLocation">Save Location</span></button>
+          </div>
+        </article>
+
+        <!-- Shift Thresholds -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="shiftThresholds">Shift Thresholds</span>
+            <div class="form-group">
+              <label class="form-group__label" for="shift1-start" data-i18n="shift1Start">Shift 1 (Morning) Start</label>
+              <input class="form-group__input" type="time" id="shift1-start" value="06:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift1-end" data-i18n="shift1End">Shift 1 End</label>
+              <input class="form-group__input" type="time" id="shift1-end" value="14:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift2-start" data-i18n="shift2Start">Shift 2 (Evening) Start</label>
+              <input class="form-group__input" type="time" id="shift2-start" value="14:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift2-end" data-i18n="shift2End">Shift 2 End</label>
+              <input class="form-group__input" type="time" id="shift2-end" value="22:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift3-start" data-i18n="shift3Start">Shift 3 (Night) Start</label>
+              <input class="form-group__input" type="time" id="shift3-start" value="22:00">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="shift3-end" data-i18n="shift3End">Shift 3 End</label>
+              <input class="form-group__input" type="time" id="shift3-end" value="06:00">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveThresholdsBtn"><span data-i18n="saveThresholds">Save Thresholds</span></button>
+          </div>
+        </article>
+
+        <!-- Preferences -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="preferences">Preferences</span>
+            <div class="toggle-row">
+              <span data-i18n="autoDetectLocation">Auto-detect location</span>
+              <label class="toggle">
+                <input type="checkbox" id="autoLocate" checked="checked" value="on">
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span data-i18n="notifEnabled">Notifications</span>
+              <label class="toggle">
+                <input type="checkbox" id="notificationsEnabled" checked="checked" value="on">
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span data-i18n="vibrateOnAction">Vibrate on clock in/out</span>
+              <label class="toggle">
+                <input type="checkbox" id="vibrateOnAction" value="on" checked="checked">
+                <span class="toggle__slider"></span>
+              </label>
+            </div>
+          </div>
+        </article>
+
+        <!-- Financial Settings -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="financialSettings">Financial Settings</span>
+            <div class="form-group">
+              <label class="form-group__label" for="baseSalary" data-i18n="baseSalary">Base Salary</label>
+              <input class="form-group__input" type="number" id="baseSalary" value="0" min="0" step="100">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveSalaryBtn"><span data-i18n="saveSalary">Save Salary</span></button>
+          </div>
+        </article>
+
+        <!-- Deductions -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="deductions">Deductions</span>
+            <div id="deductionsList"></div>
+            <button class="btn btn--secondary btn--full" id="addDeductionBtn"><span data-i18n="addDeduction">Add Deduction</span></button>
+            <button class="btn btn--primary btn--full" id="saveDeductionsBtn"><span data-i18n="saveDeductions">Save Deductions</span></button>
+          </div>
+        </article>
+
+        <!-- Vacation Settings -->
+        <article class="card">
+          <div class="card__body">
+            <span class="card__label" data-i18n="vacationSettings">Vacation Settings</span>
+            <div class="form-group">
+              <label class="form-group__label" for="vacationAnnual" data-i18n="vacationAnnual">Annual (Regular)</label>
+              <input class="form-group__input" type="number" id="vacationAnnual" value="30" min="0" max="365">
+            </div>
+            <div class="form-group">
+              <label class="form-group__label" for="vacationCasual" data-i18n="vacationCasual">Casual (Emergency)</label>
+              <input class="form-group__input" type="number" id="vacationCasual" value="15" min="0" max="365">
+            </div>
+            <button class="btn btn--primary btn--full" id="saveVacationBtn"><span data-i18n="saveVacation">Save Vacation</span></button>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Payroll ---- -->
+      <section class="section" id="section-payroll" role="tabpanel" data-i18n-aria="ariaPayroll" aria-label="Payroll">
+        <div class="month-nav">
+          <button class="month-nav__btn" id="payrollPrevMonth" aria-label="Previous month">‹</button>
+          <span class="month-nav__title" id="payrollMonthTitle">September 2026</span>
+          <button class="month-nav__btn" id="payrollNextMonth" aria-label="Next month">›</button>
+        </div>
+        <article class="card card--payroll">
+          <div class="card__body">
+            <span class="card__label" data-i18n="payrollSummary">Payroll Summary</span>
+            <div id="payroll-summary-container">
+    <div class="payroll-summary">
+      <div class="payroll-summary__item payroll-summary__item--net">
+        <span class="payroll-summary__label">Net Salary</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Base Salary</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Daily Wage</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Present Days</span>
+        <span class="payroll-summary__value">0</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Gross Salary</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item payroll-summary__item--negative">
+        <span class="payroll-summary__label">Late Penalty</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Overtime</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item">
+        <span class="payroll-summary__label">Total Allowances</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+      <div class="payroll-summary__item payroll-summary__item--negative">
+        <span class="payroll-summary__label">Total Deductions</span>
+        <span class="payroll-summary__value">0.00</span>
+      </div>
+    </div>
+  </div>
+          </div>
+        </article>
+        <article class="card card--payroll">
+          <div class="card__body">
+            <span class="card__label" data-i18n="dailyHistory">Daily History</span>
+            <div id="payroll-day-editor"><div class="day-editor"><div class="day-editor__header"><span>Date</span>
+           <span>Day</span>
+           <span>Status</span>
+           <span>Late (min)</span>
+           <span>OT (hrs)</span>
+           <span>Note</span></div><div class="day-editor__row">
+      <span class="day-editor__date">2026-08-26</span>
+      <span class="day-editor__day-name">Wed</span>
+      <div class="day-editor__status-group" data-date="2026-08-26">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-26" value="10" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-26" value="2" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-26" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-08-27</span>
+      <span class="day-editor__day-name">Thu</span>
+      <div class="day-editor__status-group" data-date="2026-08-27">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-27" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-27" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-27" value="">
+    </div><div class="day-editor__row day-editor__row--friday">
+      <span class="day-editor__date">2026-08-28</span>
+      <span class="day-editor__day-name">Fri</span>
+      <div class="day-editor__status-group" data-date="2026-08-28">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-28" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-28" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-28" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-08-29</span>
+      <span class="day-editor__day-name">Sat</span>
+      <div class="day-editor__status-group" data-date="2026-08-29">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-29" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-29" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-29" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-08-30</span>
+      <span class="day-editor__day-name">Sun</span>
+      <div class="day-editor__status-group" data-date="2026-08-30">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-30" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-30" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-30" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-08-31</span>
+      <span class="day-editor__day-name">Mon</span>
+      <div class="day-editor__status-group" data-date="2026-08-31">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-08-31" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-08-31" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-08-31" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-01</span>
+      <span class="day-editor__day-name">Tue</span>
+      <div class="day-editor__status-group" data-date="2026-09-01">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-01" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-01" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-01" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-02</span>
+      <span class="day-editor__day-name">Wed</span>
+      <div class="day-editor__status-group" data-date="2026-09-02">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-02" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-02" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-02" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-03</span>
+      <span class="day-editor__day-name">Thu</span>
+      <div class="day-editor__status-group" data-date="2026-09-03">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-03" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-03" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-03" value="">
+    </div><div class="day-editor__row day-editor__row--friday">
+      <span class="day-editor__date">2026-09-04</span>
+      <span class="day-editor__day-name">Fri</span>
+      <div class="day-editor__status-group" data-date="2026-09-04">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-04" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-04" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-04" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-05</span>
+      <span class="day-editor__day-name">Sat</span>
+      <div class="day-editor__status-group" data-date="2026-09-05">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-05" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-05" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-05" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-06</span>
+      <span class="day-editor__day-name">Sun</span>
+      <div class="day-editor__status-group" data-date="2026-09-06">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-06" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-06" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-06" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-07</span>
+      <span class="day-editor__day-name">Mon</span>
+      <div class="day-editor__status-group" data-date="2026-09-07">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-07" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-07" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-07" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-08</span>
+      <span class="day-editor__day-name">Tue</span>
+      <div class="day-editor__status-group" data-date="2026-09-08">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-08" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-08" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-08" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-09</span>
+      <span class="day-editor__day-name">Wed</span>
+      <div class="day-editor__status-group" data-date="2026-09-09">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-09" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-09" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-09" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-10</span>
+      <span class="day-editor__day-name">Thu</span>
+      <div class="day-editor__status-group" data-date="2026-09-10">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-10" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-10" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-10" value="">
+    </div><div class="day-editor__row day-editor__row--friday">
+      <span class="day-editor__date">2026-09-11</span>
+      <span class="day-editor__day-name">Fri</span>
+      <div class="day-editor__status-group" data-date="2026-09-11">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-11" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-11" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-11" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-12</span>
+      <span class="day-editor__day-name">Sat</span>
+      <div class="day-editor__status-group" data-date="2026-09-12">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-12" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-12" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-12" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-13</span>
+      <span class="day-editor__day-name">Sun</span>
+      <div class="day-editor__status-group" data-date="2026-09-13">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-13" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-13" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-13" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-14</span>
+      <span class="day-editor__day-name">Mon</span>
+      <div class="day-editor__status-group" data-date="2026-09-14">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-14" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-14" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-14" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-15</span>
+      <span class="day-editor__day-name">Tue</span>
+      <div class="day-editor__status-group" data-date="2026-09-15">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-15" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-15" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-15" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-16</span>
+      <span class="day-editor__day-name">Wed</span>
+      <div class="day-editor__status-group" data-date="2026-09-16">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-16" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-16" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-16" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-17</span>
+      <span class="day-editor__day-name">Thu</span>
+      <div class="day-editor__status-group" data-date="2026-09-17">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-17" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-17" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-17" value="">
+    </div><div class="day-editor__row day-editor__row--friday">
+      <span class="day-editor__date">2026-09-18</span>
+      <span class="day-editor__day-name">Fri</span>
+      <div class="day-editor__status-group" data-date="2026-09-18">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-18" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-18" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-18" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-19</span>
+      <span class="day-editor__day-name">Sat</span>
+      <div class="day-editor__status-group" data-date="2026-09-19">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-19" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-19" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-19" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-20</span>
+      <span class="day-editor__day-name">Sun</span>
+      <div class="day-editor__status-group" data-date="2026-09-20">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-20" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-20" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-20" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-21</span>
+      <span class="day-editor__day-name">Mon</span>
+      <div class="day-editor__status-group" data-date="2026-09-21">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-21" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-21" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-21" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-22</span>
+      <span class="day-editor__day-name">Tue</span>
+      <div class="day-editor__status-group" data-date="2026-09-22">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-22" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-22" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-22" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-23</span>
+      <span class="day-editor__day-name">Wed</span>
+      <div class="day-editor__status-group" data-date="2026-09-23">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-23" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-23" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-23" value="">
+    </div><div class="day-editor__row">
+      <span class="day-editor__date">2026-09-24</span>
+      <span class="day-editor__day-name">Thu</span>
+      <div class="day-editor__status-group" data-date="2026-09-24">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-24" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-24" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-24" value="">
+    </div><div class="day-editor__row day-editor__row--friday">
+      <span class="day-editor__date">2026-09-25</span>
+      <span class="day-editor__day-name">Fri</span>
+      <div class="day-editor__status-group" data-date="2026-09-25">
+        <button type="button" class="status-btn " data-value="present">Present</button>
+        <button type="button" class="status-btn status-btn--active" data-value="absent">Absent</button>
+        <button type="button" class="status-btn " data-value="late">Late</button>
+        <button type="button" class="status-btn " data-value="vacation">Vacation</button>
+        <button type="button" class="status-btn " data-value="sick">Sick</button>
+      </div>
+      <input type="number" class="day-editor__late" data-date="2026-09-25" value="0" min="0" max="480">
+      <input type="number" class="day-editor__ot" data-date="2026-09-25" value="0" min="0" max="24" step="any">
+      <input type="text" class="day-editor__note" data-date="2026-09-25" value="">
+    </div></div></div>
+          </div>
+        </article>
+        <article class="card card--payroll">
+          <div class="card__body">
+            <div id="payroll-allowances-editor"><div class="allowances-editor"><h3>Monthly Allowances</h3><button class="allowance-add">+ Add Allowance</button></div></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---- Section: Logs ---- -->
+      <section class="section" id="section-logs" role="tabpanel" data-i18n-aria="ariaLogs" aria-label="Logs">
+        <!-- Summary Widget -->
+        <article class="card card--summary">
+          <div class="card__body">
+            <span class="card__label" data-i18n="monthlyOverview">Monthly Overview</span>
+            <div class="summary-grid summary-grid--large">
+              <div class="summary-item summary-item--highlight">
+                <span class="summary-item__value">00:00</span>
+                <span class="summary-item__label" data-i18n="totalHours">Total Hours</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-item__value">0</span>
+                <span class="summary-item__label" data-i18n="daysWorked">Days Worked</span>
+              </div>
+              <div class="summary-item summary-item--accent">
+                <span class="summary-item__value">30</span>
+                <span class="summary-item__label" data-i18n="vacationLeft">Vacation Left</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Logs Table -->
+        <article class="card card--table">
+          <div class="card__body">
+            <span class="card__label" data-i18n="dailyHistory">Daily History</span>
+            <div class="logs-table">
+              <div class="logs-table__header">
+                <span class="logs-table__cell logs-table__cell--date" data-i18n="thDate">Date</span>
+                <span class="logs-table__cell logs-table__cell--shift" data-i18n="thShift">Shift</span>
+                <span class="logs-table__cell logs-table__cell--time" data-i18n="thIn">In</span>
+                <span class="logs-table__cell logs-table__cell--time" data-i18n="thOut">Out</span>
+                <span class="logs-table__cell logs-table__cell--hours" data-i18n="thTotal">Total</span>
+              </div>
+              <div class="logs-table__body"><div class="logs-table__row" style="justify-content:center;padding:16px;color:var(--on-surface-muted)">No records this month</div></div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- ========== BOTTOM NAVIGATION ========== -->
+    <nav class="bottom-nav" role="tablist" data-i18n-aria="mainNav" aria-label="Main navigation">
+      <button class="bottom-nav__item bottom-nav__item--active" role="tab" aria-selected="true" data-section="dashboard" aria-controls="section-dashboard">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect>        <rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span class="bottom-nav__label" data-i18n="navDashboard">Dashboard</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="settings" aria-controls="section-settings" data-testsprite-action-target="0">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+        <span class="bottom-nav__label" data-i18n="navSettings">Settings</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="payroll" aria-controls="section-payroll">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+          <path d="M12 12h.01M7 12h.01M17 12h.01"></path>
+        </svg>
+        <span class="bottom-nav__label" data-i18n="navPayroll">Payroll</span>
+      </button>
+      <button class="bottom-nav__item" role="tab" aria-selected="false" data-section="logs" aria-controls="section-logs">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        <span class="bottom-nav__label" data-i18n="navLogs">Logs</span>
+      </button>
+    </nav>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+
+
+</body></html>

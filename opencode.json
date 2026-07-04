@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "hostinger-api": {
+      "type": "local",
+      "command": ["hostinger-api-mcp"],
+      "enabled": true,
+      "environment": {
+        "DEBUG": "false"
+      }
+    }
+  }
+}

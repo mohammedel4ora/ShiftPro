@@ -1,0 +1,56 @@
+{
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "type": "frontend",
+  "name": "Payroll UX - Late and Overtime Fields Visibility",
+  "description": "Verify that late minutes (Late min) and overtime hours (OT hrs) input fields are clearly visible and labeled in the payroll day editor",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Open the ShiftPro app and navigate to the Payroll section by clicking the Payroll navigation button at the bottom"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Payroll section loads with month navigation bar showing the current month title with previous and next arrow buttons"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Daily History card is visible and contains a list or grid of date entries with day status controls"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify each day entry row has a 'Late min' numeric input field or column that is clearly labeled and visible"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify each day entry row has an 'OT hrs' numeric input field or column that is clearly labeled and visible"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the daily history table has a 'Note' field or column for each day entry"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the payroll summary card shows Net Salary, Total Allowances, Total Deductions, Late Penalties, Overtime Pay, and Vacation Balance"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Monthly Allowances section is visible below the day editor with allowance items and an Add Allowance button"
+    },
+    {
+      "type": "action",
+      "description": "Click the next month button in the month navigation bar"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the month title updates to the next month"
+    },
+    {
+      "type": "action",
+      "description": "Click the previous month button twice and verify the title updates to the previous month"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the month navigation allows selecting the correct payroll period"
+    }
+  ]
+}

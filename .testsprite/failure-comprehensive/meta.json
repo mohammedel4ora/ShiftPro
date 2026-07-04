@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "cli-v1",
+  "snapshotId": "snap_cf97bc313c0441c0",
+  "testId": "fefe90d9-d9cc-409d-a096-8a3b48df8d9b",
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "codeVersion": "v1",
+  "runIdIfAvailable": "88d33765-99d0-4f89-958b-2b35d2e9ae4d",
+  "targetUrl": "https://whitesmoke-goldfish-494647.hostingersite.com/",
+  "failedStepIndex": 19,
+  "failureKind": null,
+  "capturedAt": "2026-07-03T16:13:46.584Z",
+  "fetchedAt": "2026-07-03T16:13:54.064Z"
+}

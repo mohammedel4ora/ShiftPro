@@ -1,0 +1,18 @@
+{
+  "testId": "31bb9427-cd05-4485-9e95-8182d0c09262",
+  "status": "blocked",
+  "startedAt": "2026-07-03T15:48:41.249Z",
+  "finishedAt": "2026-07-03T15:51:39.636Z",
+  "videoUrl": "https://testsprite-videos.s3.us-east-1.amazonaws.com/24a894d8-8051-70b5-c17f-b926ca1c246e/1783093899353963//tmp/f36084e8-e54f-4b08-9540-312d3bd19747/result.webm",
+  "failureAnalysisUrl": null,
+  "snapshotId": "snap_7df67b91db14569b",
+  "runIdIfAvailable": "8be1a062-1c3a-452e-b8e5-a9aec7054a2c",
+  "codeVersion": "v1",
+  "targetUrl": "https://whitesmoke-goldfish-494647.hostingersite.com/",
+  "targetUrlSource": "run",
+  "failedStepIndex": 5,
+  "failureKind": null,
+  "verdict": "blocked",
+  "executionStatus": "completed",
+  "summary": "Blocked before a verdict could be produced: TEST BLOCKED\n\nThe test could not be run — the test requires setting the browser viewport to a mobile size (375x812) to verify mobile-responsive behaviour, but the available browser actions do not provide a way to change the viewport or emulate a mobile device.\n\nObservations:\n- No action or capability was available in this test environment to change the browser viewport or enable device emulation; mobile-specific layout checks therefore cannot be perfo…"
+}

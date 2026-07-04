@@ -1210,6 +1210,20 @@ input {
   font-size: 0.75rem;
 }
 
+.day-editor__date { grid-area: date; }
+.day-editor__day-name { grid-area: day; }
+.day-editor__status-group { grid-area: status; }
+.day-editor__late { grid-area: late; }
+.day-editor__ot { grid-area: ot; }
+.day-editor__note { grid-area: note; }
+
+.day-editor__header span:nth-child(1) { grid-area: date; }
+.day-editor__header span:nth-child(2) { grid-area: day; }
+.day-editor__header span:nth-child(3) { grid-area: status; }
+.day-editor__header span:nth-child(4) { grid-area: late; }
+.day-editor__header span:nth-child(5) { grid-area: ot; }
+.day-editor__header span:nth-child(6) { grid-area: note; }
+
 /* Allowances Editor */
 .allowances-editor {
   display: flex;
@@ -1368,18 +1382,6 @@ input {
     min-width: 120px;
   }
 
-  .day-editor__header,
-  .day-editor__row {
-    grid-template-columns: 0.6fr 0.35fr 2.8fr 0.8fr 0.8fr 1.8fr;
-    gap: 2px;
-    font-size: 0.65rem;
-  }
-
-  .status-btn {
-    font-size: 0.6rem;
-    padding: 3px 1px;
-  }
-
   .payroll-summary {
     grid-template-columns: 1fr;
   }
@@ -1446,22 +1448,6 @@ input {
     max-height: 300px;
   }
 
-  .day-editor__header,
-  .day-editor__row {
-    grid-template-columns: 0.65fr 0.35fr 2.8fr 0.8fr 0.8fr 2fr;
-    gap: 3px;
-    font-size: 0.6875rem;
-  }
-
-  .status-btn {
-    font-size: 0.625rem;
-    padding: 3px 1px;
-  }
-
-  .day-editor__date,
-  .day-editor__day-name {
-    font-size: 0.6875rem;
-  }
 }
 
 /* 481px - 640px — large phones / small tablets */
@@ -1476,6 +1462,90 @@ input {
 
   .day-editor {
     max-height: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .day-editor__header,
+  .day-editor__row {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "date day day day"
+      "status status status status"
+      "late late ot ot"
+      "note note note note";
+    gap: 8px 10px;
+    padding: 10px 12px;
+  }
+
+  .day-editor__row {
+    align-items: start;
+  }
+
+  .day-editor__header {
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
+
+  .day-editor__header span {
+    font-size: 0.6875rem;
+    white-space: normal;
+  }
+
+  .day-editor__date,
+  .day-editor__day-name {
+    align-self: center;
+    font-size: 0.75rem;
+  }
+
+  .day-editor__status-group {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .status-btn {
+    flex: 1 1 auto;
+    min-width: 58px;
+    font-size: 0.75rem;
+    padding: 6px 4px;
+  }
+
+  .day-editor__late,
+  .day-editor__ot,
+  .day-editor__note {
+    font-size: 0.8125rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .day-editor__header,
+  .day-editor__row {
+    gap: 6px 8px;
+    padding: 8px 10px;
+  }
+
+  .day-editor__header span {
+    font-size: 0.625rem;
+  }
+
+  .day-editor__date,
+  .day-editor__day-name {
+    font-size: 0.6875rem;
+  }
+
+  .status-btn {
+    min-width: 50px;
+    font-size: 0.6875rem;
+    padding: 5px 2px;
+  }
+
+  .day-editor__late,
+  .day-editor__ot,
+  .day-editor__note {
+    font-size: 0.75rem;
+    padding: 5px 6px;
   }
 }
 

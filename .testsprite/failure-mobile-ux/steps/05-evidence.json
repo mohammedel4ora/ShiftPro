@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "snapshot",
+    "stepIndex": 5,
+    "summary": "Step 5 'Expected the Payroll section to be visible.' failed. Error: TEST BLOCKED\n\nThe test could not be run — the test requires setting the browser viewport to a mobile size (375x812) to verify mobile-responsive behaviour, but the available browser actions do not provide a way to change the viewport or emulate a mobile device.\n\nObservations:\n- No action or capability was available in this test environment to change the browser viewport or enable device emulation; mobile-specific layout checks therefore cannot be performed.\n- The Payroll day editor and Late (min) and OT (hrs) numeric inputs are visible in the current desktop viewport (Daily History list and Monthly Allowances exist), but mobile readability/stacking/layout were not verifiable.",
+    "path": "steps/05-snapshot.html"
+  }
+]

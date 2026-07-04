@@ -1,0 +1,18 @@
+{
+  "testId": "fefe90d9-d9cc-409d-a096-8a3b48df8d9b",
+  "status": "blocked",
+  "startedAt": "2026-07-03T16:01:16.849Z",
+  "finishedAt": "2026-07-03T16:13:46.584Z",
+  "videoUrl": "https://testsprite-videos.s3.us-east-1.amazonaws.com/24a894d8-8051-70b5-c17f-b926ca1c246e/1783095226297456//tmp/74091153-e5af-4fd8-bdff-a3cf5d848ddf/result.webm",
+  "failureAnalysisUrl": null,
+  "snapshotId": "snap_cf97bc313c0441c0",
+  "runIdIfAvailable": "88d33765-99d0-4f89-958b-2b35d2e9ae4d",
+  "codeVersion": "v1",
+  "targetUrl": "https://whitesmoke-goldfish-494647.hostingersite.com/",
+  "targetUrlSource": "run",
+  "failedStepIndex": 19,
+  "failureKind": null,
+  "verdict": "blocked",
+  "executionStatus": "completed",
+  "summary": "Blocked before a verdict could be produced: TEST BLOCKED: 0 assertion(s) had degraded descriptions and 3 assertion(s) were dropped from the plan (plan_assertions=15, parsed=12). Assertion descriptions could not be matched to plan steps — enable TESTSPRITE_VERDICT_DOWNGRADE_DEGRADED_ASSERTIONS to block on this condition."
+}

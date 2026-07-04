@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "snapshot",
+    "stepIndex": 18,
+    "summary": "Step 18 'Click the 'Settings' button in the bottom navigation to open the Settings section and verify the Work Location card and other Settings cards' passed.",
+    "path": "steps/18-snapshot.html"
+  }
+]

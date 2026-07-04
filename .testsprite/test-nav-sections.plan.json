@@ -1,0 +1,44 @@
+{
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "type": "frontend",
+  "name": "Navigation and Section Switching",
+  "description": "Verify that bottom navigation switches between Dashboard, Settings, Payroll, and Logs sections correctly",
+  "planSteps": [
+    {
+      "type": "assertion",
+      "description": "Verify the Dashboard section is visible by default with status card, timer, quick actions, and vacation balance"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Settings navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Settings section is now visible and contains work location, shift thresholds, preferences, financial settings, deductions, and vacation settings cards"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Payroll navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Payroll section is now visible with month navigation bar showing a month title with previous/next buttons, a payroll summary card, a daily history card, and an allowances editor card"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Logs navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Logs section is now visible with monthly overview showing total hours, days worked, vacation left, and a daily history table with headers Date, Shift, In, Out, Total"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Dashboard navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Dashboard section is now visible again with all its cards"
+    }
+  ]
+}

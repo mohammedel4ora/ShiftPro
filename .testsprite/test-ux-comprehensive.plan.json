@@ -1,0 +1,88 @@
+{
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "type": "frontend",
+  "name": "UX/UI Comprehensive - All Sections",
+  "description": "Comprehensive UX/UI test covering all app sections: Dashboard status, quick actions, Settings financial/vacation config, Payroll, and Logs table",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Open the ShiftPro app and check the Dashboard section is visible by default"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard has a status card showing current status label"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard has a timer card showing today's hours with clock in time and break duration"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard has Quick Action buttons: Sick Leave, Vacation, Overtime, and Remote"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard has a weekly summary section showing hours, shifts, and overtime values"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard has a vacation balance card showing remaining annual and casual leave"
+    },
+    {
+      "type": "action",
+      "description": "Click the Settings navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Work Location card with latitude, longitude, and geofence radius inputs and a Detect Location button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Shift Thresholds card with three shift start/end time inputs and a Save button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Preferences card with toggle switches for auto-detect location, notifications, and vibrate on action"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Financial Settings card with base salary input and Save Salary button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Deductions card with Add Deduction and Save Deductions buttons"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Settings has Vacation Settings card with annual leave and casual leave number inputs and Save Vacation button"
+    },
+    {
+      "type": "action",
+      "description": "Click the Logs navigation button at the bottom of the page"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Logs section has a Monthly Overview card showing total hours, days worked, and vacation left"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Logs section has a Daily History table with column headers: Date, Shift, In, Out, and Total"
+    },
+    {
+      "type": "action",
+      "description": "Click the Payroll navigation button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Payroll has month navigation, summary card, day editor, and allowances editor"
+    },
+    {
+      "type": "action",
+      "description": "Click the Dashboard navigation button to return to home"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Dashboard content is fully visible and interactive after navigating back from other sections"
+    }
+  ]
+}

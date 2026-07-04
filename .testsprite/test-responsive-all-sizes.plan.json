@@ -1,0 +1,68 @@
+{
+  "projectId": "c1d2ca62-d39e-443b-9fca-19054b1cb2fd",
+  "type": "frontend",
+  "name": "Comprehensive Responsive Design - All Screen Sizes",
+  "description": "Test the app layout and UX across multiple screen sizes: mobile (360px, 480px), tablet (768px), and desktop (1024px, 1280px+). Verify all sections adapt correctly.",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Set browser viewport to 360x800 pixels (small mobile)"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify bottom navigation icons and labels are visible and properly sized"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Logs navigation button and verify the monthly overview and daily history table are readable"
+    },
+    {
+      "type": "action",
+      "description": "Set browser viewport to 480x900 pixels (large mobile)"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify header title and action buttons (language toggle, theme toggle, notifications) are properly spaced"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Payroll navigation button"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify payroll summary numbers are clearly displayed with positive values in green and negative values in red"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the day editor table columns (Date, Day, Status, Late, OT, Note) are all visible without horizontal scroll"
+    },
+    {
+      "type": "action",
+      "description": "Set browser viewport to 768x1024 pixels (tablet)"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the app uses wider layout effectively with more spacious card padding"
+    },
+    {
+      "type": "action",
+      "description": "Click on the Dashboard section and verify the quick actions grid shows all 4 buttons (Sick Leave, Vacation, Overtime, Remote) in a row"
+    },
+    {
+      "type": "action",
+      "description": "Set browser viewport to 1280x800 pixels (desktop)"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the main content has max-width constraint centered on screen"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify bottom navigation is styled for desktop with rounded container and centered items"
+    },
+    {
+      "type": "action",
+      "description": "Navigate to each section (Dashboard, Settings, Payroll, Logs) and verify all content loads without layout breaks"
+    }
+  ]
+}
